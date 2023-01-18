@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Cargar despachos</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="/menu">Clientes</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="/mostrar_rutas">Rutas</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="/mostrar_puntos?ruta=null">Paradas</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Despachos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="table-data">
+        <div class="todo">
+            <div class="head">
+                <h3>Seleccione una ruta</h3>
+                <i class='bx bx-filter'></i>
+            </div>
+            <ul class="todo-list">
+                {% for ruta in dataruta %}
+                <a href="/cargar_despachos?codruta={{ruta.SM_CODIGO_RUTA}}" class="completed">
+                    <p>{{ruta.SM_CODIGO_RUTA}}</p>
+                    <i class='bx bx-plus'></i>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if codruta %}
+        <div class="todo form-todo">
+            <div class="container-form">
+                <form class="sign-in-form" method="POST" action="/enviar_despachos?codruta={{codruta}}"
+                    enctype="multipart/form-data">
+                    <h2>Se cargaran los despachos para la {{codruta}}</h2>
+                    <label for="codigoruta">Ruta: </label>
+                    <input class="codruta" type="text" name="codigoruta" id="codigoruta" value="{{codruta}}" disabled>
+                    <label for="file">Cargue su archivo(.xlsx): </label>
+                    <input class="file-form" type="file" name="file" id="file">
+                    <div class="cont-button">
+                        <input class="btn solid" type="submit" value="Ingresar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="todo">
+            <div class="container-form">
+                <div class="container-gif">
+                    <div>
+                        <h3>Eliga una ruta para que pueda subir el excel con los despachos</h3>
+                        <img src="{{url_for('static', filename='img/gif-cargando.gif')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</main>
+<!-- MAIN -->
+{% endblock %}

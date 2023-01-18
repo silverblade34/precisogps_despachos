@@ -1,0 +1,134 @@
+:root {
+    --orange: #FD7238;
+    --blue: #3C91E6;
+}
+
+.btn-enviar-puntos{
+    background-color: var(--orange);
+    padding: 5px 8px;
+    border-radius: 6px;
+    color: #ffff;
+    text-decoration: none;
+}
+
+.btn-enviar-puntos .text{
+    font-size: 13px;
+}
+
+/* Normal styles for the modal */
+#modal {
+	left:50%;
+	margin:-250px 0 0 -53%;
+	opacity: 0;
+	position:absolute;
+	top:-50%;
+	visibility: hidden;
+	width:80%;
+	box-shadow:0 3px 7px rgba(0,0,0,.25);
+	box-sizing:border-box;
+	transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+}
+	/* Make the modal appear when targeted */
+	#modal:target {
+		opacity: 1;
+		top:50%;
+		visibility: visible;
+	}
+
+#modal h2 {
+	margin:0;
+    font-size: 18px;
+    text-align: center;
+}
+
+#modal .copy,#modal .header, #modal .footer {
+	padding:15px;
+}
+.modal-content {
+	background: #2e2f3b;
+	color: #ffff;
+	position: relative;
+	z-index: 9999;
+	border-radius:20px;
+}
+#modal .copy {
+	background: rgb(56, 56, 56);
+    overflow: scroll;
+	color: #ffff;
+    max-height: 400px;
+    font-size: 12px;
+}
+
+body .overlay {
+    position: fixed;
+	background-color: #000;
+	background: rgba(0,0,0,.5);
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 2100;
+}
+.cf{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.cf a{
+    background-color: var(--blue);
+    color: #fff;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+
+/* Message alert */
+.alert-message{
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 580px;
+	width: 100%;
+	padding: 30px 20px;
+	border-radius: 24px;
+	background-color: #2e2f3b;
+	color: #fff;
+	position: fixed;
+	top: 30%;
+	left: 35%;
+	z-index: 999;
+	transition: all 0.7s ease;
+}
+
+.alert-message i{
+	font-size: 70px;
+	color: #ffffff;
+}
+
+.alert-message h2{
+	margin-top: 15px;
+	text-align: center;
+	font-size: 22px;
+	font-weight: 500;
+	color: rgb(255, 255, 255);
+}
+
+.alert-message .btn-aceptar-alert{
+	margin-top: 10px;
+	background-color: #3C91E6;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 10px;
+	font-family: 'Poppins', sans-serif;
+	border: none;
+	cursor: pointer;
+}
+
+.alert-message p{
+	font-size: 12px;
+}

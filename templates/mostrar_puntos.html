@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- MAIN -->
+<main>
+    <!-- Ventana de loader -->
+    <div class="hidden-loader" id="hidden-loader">
+        <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
+    </div>
+    <!-- Ventana de loader -->
+    {%if message %}
+         <!-- Message alert -->
+         <div class="alert-message">
+            <i class='bx bx-error-circle' ></i>
+            <h2>Paradas de la {{codruta}} enviadas a SMQ</h2>
+            {% for parada in message %}
+                {% if parada.RESULTADO == "ERROR" %}
+                    <p>Codigo Parada: {{parada.SM_CODIGO_PC}} - Resultado: {{parada.RESULTADO}} - Estado: {{parada.MENSAJE}}</p>
+                {% endif %}
+            {% endfor %}
+            <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+        </div>
+        <!-- Message alert -->
+    {% endif %}
+    <div class="head-title">
+        <div class="left">
+            <h1>Cargar paradas de {{dataempresa.empresa}}</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="/menu">Clientes</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="/mostrar_rutas">Rutas</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="/mostrar_puntos?ruta=null">Paradas</a>
+                </li>
+            </ul>
+        </div>
+        <a href="/cargar_despachos?codruta=null" class="btn-download">
+            <i class='bx bx-mail-send'></i>
+            <span class="text">Cargar despachos</span>
+        </a>
+    </div>
+    <div class="table-data">
+        <div class="todo">
+            <div class="head">
+                <h3>Seleccione una ruta</h3>
+                <i class='bx bx-filter'></i>
+            </div>
+            <ul class="todo-list">
+                {% for ruta in dataruta %}
+                <a href="/mostrar_puntos?ruta={{ruta.SM_CODIGO_RUTA}}"
+                    class="completed btn-ingresar-preciso">
+                    <p>{{ruta.SM_CODIGO_RUTA}}</p>
+                    <i class='bx bx-plus'></i>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if ruta %}
+        <div class="todo"> 
+            <div class="head">
+                <h3>Paradas de la {{ruta}}</h3>
+                <a href="#modal" class="btn-enviar-puntos">
+                    <i class='bx bx-map'></i>
+                    <span class="text">Enviar paradas</span>
+                </a>
+            </div>
+            <ul class="todo-list">
+                {% for punto in datapuntos %}
+                <a href="#" class="not-completed">
+                    <div>
+                        <p>{{punto.SM_NOMBRE}}</p>
+                        <p class="cod-parada">Codigo parada: {{punto.SM_CODIGO_PC}}</p>
+                    </div>
+                    <i class='bx bxs-map-pin'></i>
+                </a>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    <!-- MODAL PUNTOS -->
+    <div id="modal">
+        <div class="modal-content">
+            <div class="header">
+                <h2>{{ruta}}</h2>
+            </div>
+            <div class="copy">
+                <code>{{data}}</code>
+            </div>
+            <div class="cf footer">
+                <a href="#" class="btn">Cancelar</a>
+                <a href="/enviar_puntos" class="btn">Enviar</a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+    <!-- MODAL PUNTOS -->
+</main>
+<!-- MAIN -->
+{% endblock %}

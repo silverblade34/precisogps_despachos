@@ -1,0 +1,19 @@
+{% extends 'mostrar_rutas.html' %}
+{% block modal %}
+  <!-- Modal -->
+  <div class="md-modal md-show md-effect-1" id="modal-1">
+    <div class="md-content">
+        <h3>{{rutacodigo}}</h3>
+            <div class="content-ruta">
+                <code>
+                    {{rutaestr}}    
+                </code>
+            </div>
+            <div class="btn-modal"> 
+                <a href="/mostrar_rutas" name="modal-btn-cancelar">Cancelar</a> 
+                <a href="/enviar_ruta_smq">Enviar ruta</a> 
+            </div>
+    </div>
+</div>
+<div class="overlay"></div>
+{% endblock %}

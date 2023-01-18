@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- MAIN -->
+<main>
+    <!-- Ventana de loader -->
+    <div class="hidden-loader" id="hidden-loader">
+        <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
+    </div>
+    <!-- Ventana de loader -->
+    {%if message %}
+    {% if message.RESULTADO == "OK" %}
+    <!-- Message alert -->
+    <div class="alert-message">
+        <i class='bx bx-check-circle'></i>
+        <h2>La {{message.SM_CODIGO_RUTA}} se ha <span>{{message.MENSAJE}}</span></h2>
+        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+    </div>
+    <!-- Message alert -->
+    {% else %}
+    <!-- Message alert -->
+    <div class="alert-message">
+        <i class='bx bx-error-circle'></i>
+        <h2>Ocurrio un error al cargar la ruta</h2>
+        <p>{{message.MENSAJE}}</p>
+        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+    </div>
+    <!-- Message alert -->
+    {% endif %}
+    {% endif %}
+    <div class="head-title">
+        <div class="left">
+            <h1>Rutas de {{dataempresa.empresa}}</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="/menu">Clientes</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Rutas</a>
+                </li>
+            </ul>
+        </div>
+        <a href="/mostrar_puntos?ruta=null" class="btn-download">
+            <i class='bx bx-mail-send'></i>
+            <span class="text">Cargar paradas</span>
+        </a>
+    </div>
+    <ul class="box-info">
+        {% for ruta in rutas %}
+            <li>
+                <i class='bx bxs-calendar-check'></i>
+                <span class="text">
+                    <h3>{{ruta.SM_CODIGO_RUTA}}</h3>
+                    <p class="nombre-ruta">{{ruta.SM_NOMBRE}}</p>
+                    <div>
+                        <a href="/modal_ruta?rutacodigo={{ruta.SM_CODIGO_RUTA}}" class="btn-cargar-ruta btn-ingresar-preciso">Cargar ruta</a>
+                    </div>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+    {% block modal %}{% endblock %}
+</main>
+<!-- MAIN -->
+{% endblock %}

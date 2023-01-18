@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}" />
+  <link rel="shortcut icon" href="{{url_for('static', filename='img/logo-preciso.png')}}" />
+  <title>Login</title>
+</head>
+
+<body>
+   <!-- Ventana de loader -->
+   <div class="hidden-loader" id="hidden-loader">
+      <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
+  </div>
+  <!-- Ventana de loader -->
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <!-- INGRESAR PRECISO-->
+        <form action="#" class="sign-in-form" method="POST" action="{{ url_for('login')}}">
+          {% if message %}
+          <!-- Message alert -->
+          <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{message}}
+          </div>
+          <!-- Message alert -->
+          {% endif %}
+          <!-- INGRESAR CLIENTE PRECISO-->
+          <h2 class="title">INICIAR SESIÓN</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" placeholder="Usuario" />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Contraseña" />
+          </div>
+          <input class="btn solid" id="btn-ingresar-preciso" type="submit" value="Ingresar" />
+        </form>
+        <!-- INGRESAR CLIENTE PRECISO-->
+        <form action="#" class="sign-up-form">
+          <h2 class="title">INICIAR SESIÓN</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="RUC" />
+          </div>
+          <input type="submit" class="btn" value="Ingresar" />
+        </form>
+      </div>
+    </div>
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>Deseas entrar como Cliente?</h3>
+          <p>
+            Ingresa las credenciales otorgadas por tu proveedor, recuerda no compartir con nadie tus credenciales</a>.
+          </p>
+          <button class="btn transparent" id="sign-up-btn">Ingresar como Cliente</button>
+        </div>
+        <img src="{{url_for('static', filename='img/precisogps.png')}}" class="image" alt="" />
+      </div>
+      <div class="panel right-panel">
+        <div class="content">
+          <h3>Deseas Ingresar como PrecisoGPS?</h3>
+          <p>
+            Ingresa las credenciales otorgadas por tu proveedor, recuerda no compartir con nadie tus credenciales</a>.
+          </p>
+          <button class="btn transparent" id="sign-in-btn">Ingresar como PrecisoGPS</button>
+        </div>
+        <img src="{{url_for('static', filename='img/log.svg')}}" class="image" alt="A picture here" />
+      </div>
+    </div>
+  </div>
+  <script src="{{url_for('static', filename='js/login.js')}}"></script>
+</body>
+
+</html>

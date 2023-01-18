@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- MAIN -->
+<main>
+    <!-- Ventana de loader -->
+    <div class="hidden-loader" id="hidden-loader">
+        <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
+    </div>
+    <!-- Ventana de loader -->
+    <div class="head-title">
+        <div class="left">
+            <h1>Lista de clientes</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Clientes</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="table-data">
+        <div class="order">
+            <div class="head">
+                <h3>Envíos a SMQ</h3>
+                <i class='bx bx-search'></i>
+                <i class='bx bx-filter'></i>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Ruc</th>
+                        <th>Status</th>
+                        <th>Rutas</th>
+                        <th>Paradas</th>
+                        <th>Despachos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in datosclient %}
+                    <tr>
+                        <td>
+                            <i class='bx bxs-user-pin'></i>
+                            <p>{{d.empresa}}</p>
+                        </td>
+                        <td>{{d.ruc}}</td>
+                        <td><span class="status {{d.status}}">{{d.status}}</span></td>
+                        <td><a href="/mostrar_rutas?ruc={{d.ruc}}" class="btn-ingresar-preciso"><span class="status {{d.status}} completed">Cargar</span></a></td>
+                        <td><a href="/mostrar_puntos?ruc={{d.ruc}}&ruta=null" class="btn-ingresar-preciso"><span class="status {{d.status}} completed">Cargar</span></a> </td>
+                        <td><a href="/cargar_despachos?ruc={{d.ruc}}&codruta=null" class="btn-ingresar-preciso"><span class="status {{d.status}} pending">Cargar</span></a> </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</main>
+<!-- MAIN -->
+
+{% endblock %}
+        
