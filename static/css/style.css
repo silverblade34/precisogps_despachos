@@ -87,6 +87,7 @@ body {
 }
 #sidebar .brand img{
 	max-width: 50px;
+	margin-left: 10px;
 }
 #sidebar .brand .text{
 	color:#842121;
@@ -310,9 +311,6 @@ body {
 /* NAVBAR */
 
 
-
-
-
 /* MAIN */
 #content main {
 	width: 100%;
@@ -433,9 +431,6 @@ body {
 #content main .box-info li .text p {
 	color: var(--dark);	
 }
-
-
-
 
 
 #content main .table-data {
@@ -564,14 +559,6 @@ body {
 /* MAIN */
 /* CONTENT */
 
-
-
-
-
-
-
-
-
 @media screen and (max-width: 768px) {
 	#sidebar {
 		width: 200px;
@@ -657,3 +644,53 @@ body {
   }
 
 /* Ventana de carga loader */
+
+/* Message alert */
+.alert-message-menu{
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 480px;
+	width: 100%;
+	padding: 30px 20px;
+	border-radius: 24px;
+	background-color: #2e2f3b;
+	color: #fff;
+	position: fixed;
+	top: 30%;
+	left: 40%;
+	z-index: 999;
+	transition: all 0.7s ease;
+}
+
+.alert-message-menu i{
+	font-size: 70px;
+	color: #ffffff;
+}
+
+.alert-message-menu h2{
+	margin-top: 15px;
+	text-align: center;
+	font-size: 22px;
+	font-weight: 500;
+	color: rgb(255, 255, 255);
+}
+.alert-message-menu p{
+	font-size: 13px;
+}
+
+.alert-message-menu .btn-aceptar-alert{
+	margin-top: 10px;
+	background-color: #3C91E6;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 10px;
+	font-family: 'Poppins', sans-serif;
+	border: none;
+	cursor: pointer;
+}
+
+.alert-message-menu h2 span{
+	text-transform: lowercase;
+}

@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for, session
 from flask_cors import CORS, cross_origin
 from src.clientes.infrastructure.controller import ClientController
+from src.rutas.infrastructure.controller import RutasController
 
 from __main__ import app
 app.secret_key = "hhyy526//--"
@@ -32,7 +33,10 @@ def menu():
 @app.route('/rutas')
 def rutas():
     if 'user' in session:
-        return render_template('rutas.html')
+        datosclient = session['dataclientes']
+        _rutasCL = RutasController()
+        dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
+        return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient)
     else:
         return redirect(url_for('login'))  
 

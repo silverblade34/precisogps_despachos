@@ -70,3 +70,82 @@
     height: 100%;
 }
 
+.progress-bar{
+    background-color:#5c7297;
+    padding: 10px 30px;
+    border-radius: 15px;
+    position: fixed;
+    bottom: 5px;
+    max-width: 350px;
+    right: 5px;
+    display: none;
+    transition: all 0.8s ease;
+}
+
+.progress-bar div{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-bar h4{
+    color: #fff;
+}
+.progress-bar img{
+    width: 350px;
+    contain:content;
+}
+
+
+/* Message alert */
+.alert-message-placas{
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 450px;
+	width: 100%;
+	padding: 30px 20px;
+	border-radius: 24px;
+	background-color: #2e2f3b;
+	color: #fff;
+	position: fixed;
+	top: 10%;
+	left: 40%;
+	z-index: 999;
+	transition: all 0.7s ease;
+}
+
+.alert-message-placas i{
+	font-size: 70px;
+	color: #ffffff;
+}
+
+.alert-message-placas h2{
+	margin-top: 15px;
+	text-align: center;
+	font-size: 22px;
+	font-weight: 500;
+	color: rgb(255, 255, 255);
+}
+
+.alert-message-placas .btn-aceptar-alert{
+	margin-top: 10px;
+	background-color: #3C91E6;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 10px;
+    font-size: 14px;
+	font-family: 'Poppins', sans-serif;
+	border: none;
+	cursor: pointer;
+}
+
+.alert-message-placas p{
+    font-size: 14px;
+}
+
+.alert-message-placas span{
+    font-size: 13px;
+}

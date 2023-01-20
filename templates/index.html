@@ -7,6 +7,18 @@
         <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
     </div>
     <!-- Ventana de loader -->
+    
+    <!-- Message alert -->
+    {% if message %}
+    <div class="alert-message-menu">
+        <i class='bx bx-error-circle'></i>
+        <h2>Ocurrio un error al acceder a {{message}}</h2>
+        <p>Token vencido: Comuniquese con el área de soporte de Sysnet</p>
+        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+    </div>
+    {% endif %}
+    <!-- Message alert -->
+    
     <div class="head-title">
         <div class="left">
             <h1>Lista de clientes</h1>
@@ -48,9 +60,15 @@
                         </td>
                         <td>{{d.ruc}}</td>
                         <td><span class="status {{d.status}}">{{d.status}}</span></td>
-                        <td><a href="/mostrar_rutas?ruc={{d.ruc}}" class="btn-ingresar-preciso"><span class="status {{d.status}} completed">Cargar</span></a></td>
-                        <td><a href="/mostrar_puntos?ruc={{d.ruc}}&ruta=null" class="btn-ingresar-preciso"><span class="status {{d.status}} completed">Cargar</span></a> </td>
-                        <td><a href="/cargar_despachos?ruc={{d.ruc}}&codruta=null" class="btn-ingresar-preciso"><span class="status {{d.status}} pending">Cargar</span></a> </td>
+                        {% if d.status == True %}
+                            <td><a href="/mostrar_rutas?ruc={{d.ruc}}" class="btn-ingresar-preciso"><span class="status {{d.status}} completed">Cargar</span></a></td>
+                            <td><a href="/mostrar_puntos?ruc={{d.ruc}}&ruta=null" class="btn-ingresar-preciso"><span class="status {{d.status}} completed">Cargar</span></a> </td>
+                            <td><a href="/cargar_despachos?ruc={{d.ruc}}&codruta=null" class="btn-ingresar-preciso"><span class="status {{d.status}} pending">Cargar</span></a> </td>
+                        {% else %}
+                            <td><a href="#"><span class="status {{d.status}} completed">Cargar</span></a></td>
+                            <td><a href="#"><span class="status {{d.status}} completed">Cargar</span></a> </td>
+                            <td><a href="#"><span class="status {{d.status}} pending">Cargar</span></a> </td>
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>

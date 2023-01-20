@@ -36,3 +36,8 @@ class RutasController:
                 dataempresa['ruc'] = d['ruc']
                 dataempresa['empresa'] = d['empresa']
         return dataempresa
+    
+    def resumenRutasSMQ(self, dataclientes):
+        resp = RutasResponse()
+        data = resp.resumenRutasSMQ(dataclientes)
+        return data

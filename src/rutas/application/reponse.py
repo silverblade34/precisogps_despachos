@@ -31,4 +31,25 @@ class RutasResponse:
             if ruta['SM_CODIGO_RUTA'] == rutacodigo:
                 return ruta
 
+    def responseMostrarRutasSMQ(self):
+        response = requests.get("http://192.168.1.37:3222/api/v1/ruta/smq")
+        data = response.json()
+        return data['data']
+    
+    def resumenRutasSMQ(self, dataclientes):
+        dataSMQ = self.responseMostrarRutasSMQ()
+        listarutasresumen = []
+        for ruta in dataSMQ:
+            for cliente in dataclientes:
+                if ruta['RUC_OTT'] == cliente['ruc']:
+                    datosrutasmq = {}
+                    datosrutasmq['CODIGO_RUTA'] = ruta['CODIGO_RUTA']
+                    datosrutasmq['GISROU_NOMBRE'] = ruta['GISROU_NOMBRE']
+                    datosrutasmq['RUC_OTT'] = ruta['RUC_OTT']
+                    datosrutasmq['NOMBRE_EMPRESA'] = cliente['empresa']
+                    listarutasresumen.append(datosrutasmq)
+        return listarutasresumen
+
+
+
 

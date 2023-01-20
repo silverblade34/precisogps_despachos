@@ -12,3 +12,10 @@ class PuntosController:
         enviarsmq = PuntosResponse()
         resp = enviarsmq.responseEnviarPuntos(puntosestr) 
         return resp
+    
+    def statusRutasSMQ(self, codruta, ruc):
+        validarRutas = PuntosResponse()
+        resp = validarRutas.responseValidarRutas(codruta, ruc) 
+        return resp
+    
+    

@@ -11,19 +11,20 @@ class ResponseDespachos:
            list.append(d['SM_CODIGO_PC'])
         return list
     
-    def responseEstructura(self, file, coddatapuntos, codruta, dataempresa, codigodespacho):
-        #pc = [359376, 359375, 359360, 359358, 359373, 359367, 359371, 359363, 359378, 359359, 359380, 359357, 525519] : coddatapuntos
+    def responseEstructura(self, file, coddatapuntos, codruta, dataempresa):
         try:
             if file and file.filename.endswith('.xlsx'):
+                codigodespacho = self.codigoDespachoMostrar()
+                print("Anterior orden despacho: "+ str(codigodespacho)) 
                 df = pd.read_excel(file, sheet_name=1)
                 cantdesp=0
-                limit = 99
                 tramaspuntos = len(coddatapuntos) + 1
                 fechaf= ""
                 counter = 0
+                totalestrdespachos = []
                 for i in range(0, df.shape[0], tramaspuntos): 
-                    if counter >= limit:
-                        break
+                    # if counter >= limit:
+                    #     break
                     despachos={}
                     despachos["SM_RUC_OTT"]= dataempresa['ruc']
                     despachos["SM_CODIGO_RUTA"] = codruta
@@ -58,8 +59,15 @@ class ResponseDespachos:
                             p += 1
                     cantdesp=cantdesp+1
                     despachos["SM_PC"]=SM_PC
-                    despachosEnviar= json.dumps(despachos)
-                    print(despachosEnviar)
+                    # despachosEnviar= json.dumps(despachos)
+                    # resp = self.parsedEnviarDespachos(despachosEnviar)
+                    # -------------------------------------------------------------
+                    #GUARDAR LA ESTRUCTURA FINAL DEL DESPACHO EN UNA ARCHIVO JSON
+                    totalestrdespachos.append(despachos)
+                despachosEnviar = json.dumps(totalestrdespachos)
+                with open('datos.json', 'w') as f:
+                    f.write(despachosEnviar)
+                    # -------------------------------------------------------------
                     # if len(respuesta)<= 1:
                     #     print(despachos["SM_PLACA"])
                     # else:
@@ -70,16 +78,81 @@ class ResponseDespachos:
                     # print("Despachos enviados: "+ str(cantdesp))
                     # #time.sleep(1)
             #listaf=json.dumps(lista)
+                valor_orden = cantdesp + int(codigodespacho) + 1
+                actualizar = self.codigoDespachoActualizar("SM_DESPACHOS", valor_orden)
+                print("Nuevo orden despacho: "+ str(valor_orden))   
                 return "Completo"
         except Exception as err:
             print(err)
+    
+    def parsedValidarPlacas(self, file, dataempresa, datapuntos):
+        if file and file.filename.endswith('.xlsx'):
+            listplacas_empresa = self.parsedListarPlacasSMQ(dataempresa)
+            df = pd.read_excel(file, sheet_name=1)
+            tramaspuntos = len(datapuntos) + 1
+            placasexcel = []
+            resultestado = {}
+            for i in range(0, df.shape[0], tramaspuntos): 
+                for i, row in df.iloc[i:i + tramaspuntos].iterrows():
+                    if i == 0 or i%tramaspuntos == 0:
+                        placai= str(row[0])
+                        placaf=placai[:7]
+                        placasexcel.append(placaf)
+            print("Placas que pertenecen a Quitumbe: "+ str(len(listplacas_empresa)))
+            placas_unicas_excel = list(set(placasexcel))
+            print("Placas unicas en el excel: "+ str(len(placas_unicas_excel)))
+            if all(item in listplacas_empresa for item in placas_unicas_excel):
+                resultestado['status'] = True
+            else:
+                resultestado['status'] = False
+                placas_excel_set = set(placas_unicas_excel)
+                placas_faltantes = list( placas_excel_set.difference(listplacas_empresa) )
+                resultestado['placas'] = placas_faltantes
+            return resultestado
 
-    def parsedEnviarDespachos(self, despachosEnviar): 
+    def parsedVehiculosCargadosSMQ(self): 
+        response = requests.get(f'http://smmonitoreo.quito.gob.ec:444/api/vehiculos/?token=A1B8B0F9-490A-4E3B-BEC3-56FC54901AFA')
+        raw = response.json()
+        return raw
+        
+    def parsedListarPlacasSMQ(self, dataempresa):
+        vehiculos = self.parsedVehiculosCargadosSMQ()
+        listplacas = []
+        for v in vehiculos:
+            if v['RUC_OTT'] == dataempresa['ruc']:
+                listplacas.append(v['PLACA'])
+        return listplacas
+    
+    def codigoDespachoMostrar(self):
+        response = requests.get(f'http://192.168.1.37:3222/api/v1/orden/mostrar')
+        raw = response.json()
+        ndespachos = raw['data']['SM_DESPACHOS']
+        return ndespachos
+    
+    def codigoDespachoActualizar(self, nameorden, valor):
+        response = requests.get(f'http://192.168.1.37:3222/api/v1/orden/actualizar?nameorden={nameorden}&valorden={valor}')
+        raw = response.json()
+        return raw['data']
+    
+    def responseConnectDespachos(self):
         headers={
             "Content-Type":"application/json"
             }
         response = requests.post(f'http://smmonitoreo.quito.gob.ec:444/api/despachar/?token=A1B8B0F9-490A-4E3B-BEC3-56FC54901AFA', despachosEnviar , headers=headers )
         raw = response.json()
         return raw
+
+    def responseEnviarDespachos(self):
+        with open('datos.json', 'r') as file:
+            # carga el json en un objeto python
+            data = json.load(file)
+        # recorre el objeto python
+        cont = 0
+        for item in data:
+            cont += 1
+        print(cont)
+        print(data[0])
+        print(data[-1])
+        return "Enviado"
 
    

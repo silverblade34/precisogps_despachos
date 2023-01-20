@@ -10,7 +10,7 @@
     {%if message %}
          <!-- Message alert -->
          <div class="alert-message">
-            <i class='bx bx-error-circle' ></i>
+            <i class='bx bx-check-circle'></i>
             <h2>Paradas de la {{codruta}} enviadas a SMQ</h2>
             {% for parada in message %}
                 {% if parada.RESULTADO == "ERROR" %}
@@ -20,6 +20,16 @@
             <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
         </div>
         <!-- Message alert -->
+    {% endif %}
+    {%if messagevalidar %}
+         <!-- Message alert validarRuta -->
+         <div class="alert-message">
+            <i class='bx bx-error-circle' ></i>
+            <h2>{{messagevalidar}}</h2>
+            <p>Recuerde que para cargar las paradas primero debe cargar la ruta a SMQ</p>
+            <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+        </div>
+        <!-- Message alert validarRuta-->
     {% endif %}
     <div class="head-title">
         <div class="left">

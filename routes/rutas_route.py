@@ -14,11 +14,14 @@ def mostrar_rutas():
         if 'dataempresa' in session:
             return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = session['dataruta']) 
         else:
-            dataempresa = _rutasCL.setDataEmpresa(session['dataclientes'], request.args['ruc']) 
-            dataruta = _rutasCL.rutasCliente(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'])
-            session['dataempresa'] = dataempresa
-            session['dataruta'] = dataruta
-            return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = dataruta) 
+            try:
+                dataempresa = _rutasCL.setDataEmpresa(session['dataclientes'], request.args['ruc']) 
+                dataruta = _rutasCL.rutasCliente(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'])
+                session['dataempresa'] = dataempresa
+                session['dataruta'] = dataruta
+                return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = dataruta)
+            except Exception as err:
+                return render_template('index.html', datosclient = session['dataclientes'], message = err)
     else:
         return redirect(url_for('login')) 
 
@@ -44,5 +47,12 @@ def enviar_ruta_smq():
         result = resp[1:-1]
         message = ast.literal_eval(result)
         return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = session['dataruta'], message = message)
+    else:
+        return redirect(url_for('login'))
+    
+@app.route('/mostrar_rutas_smq', methods = ['GET'])
+def mostrar_rutas_smq():
+    if 'user' in session:
+        pass
     else:
         return redirect(url_for('login'))

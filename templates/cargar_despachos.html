@@ -2,9 +2,52 @@
 {% block body %}
 <!-- MAIN -->
 <main>
+    <!-- Progress Bar de la carga de despachos -->
+    <div class="progress-bar" id="progress-bar">
+        <h4>Los despachos se estan enviando a SMQ...</h4>
+        <div>
+            <img src="{{url_for('static', filename='img/gif-progress-bar.gif')}}" alt="">
+        </div>
+    </div>
+    <!-- Progress Bar de la carga de despachos -->
+    <!-- Message alert validarRuta -->
+    {%if messagevalidar %}
+    <div class="alert-message">
+        <i class='bx bx-error-circle'></i>
+        <h2>{{messagevalidar}}</h2>
+        <p>Recuerde que para cargar los despachos primero debe cargar la ruta y sus paradas</p>
+        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+    </div>
+    {% endif %}
+    <!-- Message alert validarRuta-->
+    <!-- Message alert validar Placas -->
+    {%if messageplacas %}
+    <div class="alert-message-placas" id="alert-message-placas">
+        <i class='bx bx-error-circle'></i>
+        <h2>Hay algunas placas que no estan cargadas en SMQ</h2>
+        <p>Si decide proceder con la carga, las tramas que estan asociadas a estas placas no se cargaran: </p>
+        {% for placa in messageplacas %}
+        <span>{{placa}}</span>
+        {% endfor %}
+        <div>
+            <button class="btn-aceptar-alert" id="btn-message-placas">Cancelar carga</button>
+            <a href="/enviar_despachos" id="btn-progress-bar" class="btn-aceptar-alert btn-progress-bar">Continuar carga</a>
+        </div>
+    </div>
+    {% endif %}
+    <!-- Message alert validar Placas-->
+    <!-- Message confirmar envio despachos -->
+    {%if messageconfirm %}
+    <div class="alert-message">
+        <i class='bx bx-check-circle'></i>
+        <h2>{{messageconfirm}}</h2>
+        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+    </div>
+    {% endif %}
+    <!-- Message confirmar envio despachos -->
     <div class="head-title">
         <div class="left">
-            <h1>Cargar despachos</h1>
+            <h1>Cargar despachos de {{dataempresa.empresa}}</h1>
             <ul class="breadcrumb">
                 <li>
                     <a href="#">Dashboard</a>
@@ -46,7 +89,7 @@
         {% if codruta %}
         <div class="todo form-todo">
             <div class="container-form">
-                <form class="sign-in-form" method="POST" action="/enviar_despachos?codruta={{codruta}}"
+                <form class="sign-in-form" method="POST" action="/validar_placas?codruta={{codruta}}"
                     enctype="multipart/form-data">
                     <h2>Se cargaran los despachos para la {{codruta}}</h2>
                     <label for="codigoruta">Ruta: </label>
@@ -54,7 +97,7 @@
                     <label for="file">Cargue su archivo(.xlsx): </label>
                     <input class="file-form" type="file" name="file" id="file">
                     <div class="cont-button">
-                        <input class="btn solid" type="submit" value="Ingresar" />
+                        <input class="btn solid btn-progress-bar" type="submit" id="btn-progress-bar" value="Ingresar" />
                     </div>
                 </form>
             </div>
