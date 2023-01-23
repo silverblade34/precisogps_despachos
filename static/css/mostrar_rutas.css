@@ -20,7 +20,9 @@ div.table {
     height: 10%;
     background-color: #fff4;
     padding: .8rem 1rem;
+}
 
+.table__header form{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -114,11 +116,11 @@ thead th {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #0000000b;
+    background-color: #f0f0f0d8;
 }
 
 tbody tr:hover {
-    background-color: #fff6 !important;
+    background-color: rgba(219, 219, 219, 0.582) !important;
 }
 
 .status {
@@ -259,6 +261,8 @@ thead th:hover {
     background-color: #3C91E6;
     color: #fff;
     font-size: 14px;
+    border: none;
+    cursor: pointer;
 }
 
 .table__header .select{
@@ -266,3 +270,4 @@ thead th:hover {
     border: 1px solid rgb(209, 209, 209);
     border-radius: 3px;
 }
+

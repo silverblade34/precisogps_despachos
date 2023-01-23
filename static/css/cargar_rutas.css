@@ -1,13 +1,26 @@
 
 .nombre-ruta{
     font-size: 12.5px;
+	text-align: center;
+}
+
+
+.box-info .text div{
+    display: flex;
+	width: 100%;
+    justify-content: center;
+}
+
+.box-info .text{
+	width: 100%;
+	text-align: center;
 }
 
 .btn-cargar-ruta{
     padding: 8px 12px;
     border: none;
     width: 60%;
-	min-width: 120px;
+	width: 120px;
     margin-top: 10px;
     background-color: #3C91E6;
     border-radius: 10px;
@@ -17,10 +30,7 @@
     text-align: center;
 }
 
-.box-info .text div{
-    display: flex;
-    justify-content: center;
-}
+
 
 /*---------------------MODAL-------------------------- */ 
 
@@ -206,4 +216,13 @@ perspective effects (not including the modals and the overlay).
 
 .alert-message h2 span{
 	text-transform: lowercase;
+}
+
+@media (min-width: 1504px) {
+	.box-info{
+		padding: 0 80px;
+	}
+	.btn-cargar-ruta{
+		width: 180px;
+	}
 }

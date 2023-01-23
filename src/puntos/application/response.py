@@ -1,5 +1,6 @@
 import json
 import requests
+import Levenshtein
 
 class PuntosResponse:
     def __init__(self):
@@ -18,5 +19,42 @@ class PuntosResponse:
         response = requests.get(f"http://192.168.1.37:3222/api/v1/smq/rutas/validar?codruta={codruta}&ruc={ruc}")
         raw = response.json()
         return raw['status']
+    
+    def resumenPuntosSMQ(self, dataclientes):
+        dataSMQ = self.responseMostrarPuntosSMQ()
+        listarutasresumen = []
+        for parada in dataSMQ:
+            for cliente in dataclientes:
+                if parada['RUC_OTT'] == cliente['ruc']:
+                    datosrutasmq = {}
+                    datosrutasmq['CODIGO_RUTA'] = parada['CODIGO_RUTA']
+                    datosrutasmq['NOMBRE_PC'] = parada['NOMBRE_PC']
+                    datosrutasmq['RUC_OTT'] = parada['RUC_OTT']
+                    datosrutasmq['NOMBRE_EMPRESA'] = cliente['empresa']
+                    listarutasresumen.append(datosrutasmq)
+        return listarutasresumen
+    
+    def responseMostrarPuntosSMQ(self):
+        response = requests.get("http://192.168.1.37:3222/api/v1/puntos/mostrar/smq")
+        data = response.json()
+        return data['data']
+    
+    def responseFiltrosPuntos(self, codruta, empresa, dataresumen):
+        datafiltro = []
+        cont = 0
+        for parada in dataresumen:
+            codruta2 = codruta.replace(" ","").lower()
+            puntodata = parada['NOMBRE_PC'].replace(" ","").lower()
+            distance = Levenshtein.distance(puntodata, codruta2)
+            if distance < 3 or parada['RUC_OTT'] == empresa:
+                datafiltro.append(parada)
+                cont += 1
+        if cont == 0:
+            datafiltro = dataresumen
+        
+        return datafiltro
+
+
+    
     
     

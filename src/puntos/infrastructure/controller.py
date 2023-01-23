@@ -18,4 +18,14 @@ class PuntosController:
         resp = validarRutas.responseValidarRutas(codruta, ruc) 
         return resp
     
+    def resumenPuntosSMQ(self, dataclientes):
+        response = PuntosResponse()
+        resp = response.resumenPuntosSMQ(dataclientes)
+        return resp
+
+    def filtroPuntosSMQ(self, parada, empresa, dataresumen):
+        resp = PuntosResponse()
+        data = resp.responseFiltrosPuntos(parada, empresa, dataresumen)
+        return data
+    
     

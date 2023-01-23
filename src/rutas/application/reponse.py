@@ -49,6 +49,20 @@ class RutasResponse:
                     datosrutasmq['NOMBRE_EMPRESA'] = cliente['empresa']
                     listarutasresumen.append(datosrutasmq)
         return listarutasresumen
+    
+    def responseFiltrosRutas(self, codruta, empresa, dataresumen):
+        datafiltro = []
+        cont = 0
+        for ruta in dataresumen:
+            codruta2 = codruta.replace(" ","").upper()
+            if ruta['CODIGO_RUTA'] == codruta2 or ruta['RUC_OTT'] == empresa:
+                datafiltro.append(ruta)
+                cont += 1
+        if cont == 0:
+            datafiltro = dataresumen
+        
+        return datafiltro
+
 
 
 
