@@ -42,8 +42,21 @@ class RutasController:
         data = resp.resumenRutasSMQ(dataclientes)
         return data
     
+    def mostrarRutaSMQ(self, codruta):
+        resp = RutasResponse()
+        data = resp.responseModalRutaSMQ(codruta)   
+        return data
+    
     def filtroRutasSMQ(self, ruta, empresa, dataresumen):
         resp = RutasResponse()
         data = resp.responseFiltrosRutas(ruta, empresa, dataresumen)
         return data
+    
+    def editarRutaSMQ(self, rutaeditar, nombreruta, coordenadas):
+        resp = RutasResponse()
+        data = resp.responseEditarRutasSMQ(rutaeditar, nombreruta, coordenadas)
+        return data
+
+
+
         

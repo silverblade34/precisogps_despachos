@@ -3,6 +3,7 @@ from flask_cors import CORS, cross_origin
 from src.clientes.infrastructure.controller import ClientController
 from src.rutas.infrastructure.controller import RutasController
 from src.puntos.infrastructure.controller import PuntosController
+from src.despachos.infrastructure.controller import DespachosController
 
 from __main__ import app
 app.secret_key = "hhyy526//--"
@@ -36,13 +37,20 @@ def rutas():
     if 'user' in session:
         datosclient = session['dataclientes']
         _rutasCL = RutasController()
-        if request.method == 'POST':
+        codruta = request.args.get('codruta')
+        if codruta:
             dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-            datafiltro = _rutasCL.filtroRutasSMQ(request.form['codruta'], request.form['select-ruc'], dataresumen)
-            return render_template('rutas.html', dataresumen = datafiltro, datosclient = datosclient)
+            dataruta = _rutasCL.mostrarRutaSMQ(codruta)
+            session['rutaeditar'] = dataruta
+            return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient, dataruta = dataruta)
         else:
-            dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-            return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient)
+            if request.method == 'POST':
+                dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
+                datafiltro = _rutasCL.filtroRutasSMQ(request.form['codruta'], request.form['select-ruc'], dataresumen)
+                return render_template('rutas.html', dataresumen = datafiltro, datosclient = datosclient)
+            else:
+                dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
+                return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient)
     else:
         return redirect(url_for('login'))
     
@@ -59,7 +67,20 @@ def paradas():
             dataresumen = _rutasCL.resumenPuntosSMQ(datosclient)
             return render_template('paradas.html', dataresumen = dataresumen, datosclient = datosclient)
     else:
-        return redirect(url_for('login'))  
+        return redirect(url_for('login'))
+
+@app.route('/despachos', methods = ['POST', 'GET'])
+def despachos():
+    if 'user' in session:
+        datosclient = session['dataclientes']
+        _despachosCL = DespachosController()
+        if request.method == 'POST':
+            datadespachos = _despachosCL.mostrarDespachosSMQ(request.form['date-filtro'], request.form['select-ruc'])
+            return render_template('despachos.html', datosclient = datosclient, datadespachos = datadespachos)
+        else:
+            return render_template('despachos.html', datosclient = datosclient)
+    else:
+        return redirect(url_for('login'))    
 
 @app.route('/logout')
 def logout():

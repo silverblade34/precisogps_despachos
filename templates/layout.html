@@ -28,19 +28,19 @@
 				</a>
 			</li>
 			<li >
-				<a href="{{ url_for('rutas')}}" class="btn-ingresar-preciso">
+				<a href="{{ url_for('rutas')}}" class="btn-preciso-4">
 					<i class='bx bxs-carousel'></i>
 					<span class="text">Rutas</span>
 				</a>
 			</li>
 			<li >
-				<a href="{{ url_for('paradas')}}" class="btn-ingresar-preciso">
+				<a href="{{ url_for('paradas')}}" class="btn-preciso-4">
 					<i class='bx bxs-doughnut-chart' ></i>
 					<span class="text">Paradas</span>
 				</a>
 			</li>
 			<li >
-				<a href="#">
+				<a href="{{ url_for('despachos')}}" class="btn-preciso-4">
 					<i class='bx bxs-file-json' ></i>
 					<span class="text">Despachos</span>
 				</a>
@@ -69,10 +69,6 @@
 			<i class='bx bx-menu' ></i>
 			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
-				<div class="form-input">
-					<input type="search" placeholder="Search...">
-					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
-				</div>
 			</form>
 			<input type="checkbox" id="switch-mode" hidden>
 			<label for="switch-mode" class="switch-mode"></label>
@@ -91,6 +87,7 @@
         <!-- CONTENIDO PRINCIPAL-->
 	</section>
 	<!-- CONTENT -->
+	<script src="{{url_for('static', filename='js/despachos.js')}}"></script>
 	<script src="{{url_for('static', filename='js/script.js')}}"></script>
 	<script src="{{url_for('static', filename='js/rutas.js')}}"></script>
 </body>

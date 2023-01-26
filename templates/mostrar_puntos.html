@@ -3,7 +3,7 @@
 <!-- MAIN -->
 <main>
     <!-- Ventana de loader -->
-    <div class="hidden-loader" id="hidden-loader">
+    <div class="hidden-loader" id="hidden-loader-4">
         <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
     </div>
     <!-- Ventana de loader -->
@@ -66,7 +66,7 @@
             <ul class="todo-list">
                 {% for ruta in dataruta %}
                 <a href="/mostrar_puntos?ruta={{ruta.SM_CODIGO_RUTA}}"
-                    class="completed btn-ingresar-preciso">
+                    class="completed btn-preciso-4">
                     <p>{{ruta.SM_CODIGO_RUTA}}</p>
                     <i class='bx bx-plus'></i>
                 </a>

@@ -19,6 +19,26 @@
         <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
     </div>
     <!-- Ventana de loader -->
+    {%if message %}
+    {% if message.RESULTADO == "OK" %}
+    <!-- Message alert -->
+    <div class="alert-message">
+        <i class='bx bx-check-circle'></i>
+        <h2>La {{message.SM_CODIGO_RUTA}} se ha <span>{{message.MENSAJE}}</span></h2>
+        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+    </div>
+    <!-- Message alert -->
+    {% else %}
+    <!-- Message alert -->
+    <div class="alert-message">
+        <i class='bx bx-error-circle'></i>
+        <h2>Ocurrio un error al cargar la ruta</h2>
+        <p>{{message.MENSAJE}}</p>
+        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
+    </div>
+    <!-- Message alert -->
+    {% endif %}
+    {% endif %}
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
@@ -27,26 +47,26 @@
         </a>
         <ul class="side-menu top">
             <li class="btn-ingresar-preciso">
-                <a href="{{ url_for('menu')}}" >
+                <a href="{{ url_for('menu')}}" class="btn-preciso-2">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Principal</span>
                 </a>
             </li>
             <li class="active">
-                <a href="{{ url_for('rutas')}}">
+                <a href="{{ url_for('rutas')}}" class="btn-preciso-2">
                     <i class='bx bxs-carousel'></i>
                     <span class="text">Rutas</span>
                 </a>
             </li>
-            <li >
-				<a href="{{ url_for('paradas')}}" class="btn-ingresar-preciso">
-					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Paradas</span>
-				</a>
-			</li>
             <li>
-                <a href="#">
-                    <i class='bx bxs-file-json'></i>
+                <a href="{{ url_for('paradas')}}" class="btn-preciso-2">
+                    <i class='bx bxs-doughnut-chart'></i>
+                    <span class="text">Paradas</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('despachos')}}">
+                    <i class='bx bxs-file-json' class="btn-preciso-2"></i>
                     <span class="text">Despachos</span>
                 </a>
             </li>
@@ -74,10 +94,7 @@
             <i class='bx bx-menu'></i>
             <a href="#" class="nav-link">Categories</a>
             <form action="#">
-                <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
-                </div>
+
             </form>
             <a href="#" class="notification">
                 <i class='bx bxs-bell'></i>
@@ -122,7 +139,7 @@
                                 <input class="input-seek" name="codruta" type="search" placeholder="Ruta...">
                                 <i class='bx bx-search-alt-2'></i>
                             </div>
-                            <input type="submit" class="btn-rutas-smq btn-ingresar-preciso" value="Buscar"/>
+                            <input type="submit" class="btn-preciso-editar btn-preciso-2" value="Buscar" />
                         </form>
                         <!-- <div class="export__file">
                             <label for="export-file" class="export__file-btn" title="Export File"></label>
@@ -151,11 +168,13 @@
                                 {% for ruta in dataresumen %}
                                 <tr>
                                     <td> {{ruta.CODIGO_RUTA}}</td>
-                                    <td>  {{ruta.NOMBRE_EMPRESA}}</td>
+                                    <td> {{ruta.NOMBRE_EMPRESA}}</td>
                                     <td> {{ruta.RUC_OTT}} </td>
                                     <td> {{ruta.GISROU_NOMBRE}}</td>
                                     <td>
-                                        <p class="status delivered">Editar</p>
+                                        <a href="/rutas?codruta={{ruta.CODIGO_RUTA}}"
+                                            class="btn-preciso-editar btn-preciso-2"> Editar
+                                        </a>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -166,8 +185,51 @@
             </section>
         </main>
         <!-- MAIN -->
+        {% if dataruta %}
+        <!-- MODAL PUNTOS -->
+        <!-- Modal -->
+        <div class="md-modal md-show md-effect-1" id="modal-1">
+            <div class="md-content">
+                <h3>{{dataruta.CODIGO_RUTA}}</h3>
+                <div class="content-ruta">
+                    <form action="/enviar_ruta_smq" class="form-editar-rutas" method="POST">
+                        <div>
+                            <label for="">CODIGO_RUTA</label>
+                            <input type="text" value="{{dataruta.CODIGO_RUTA}}" disabled>
+                        </div>
+                        <div>
+                            <label for="">GISROU_NOMBRE</label>
+                            <input type="text" name="nombre-ruta" class="input-nombre"
+                                value="{{dataruta.GISROU_NOMBRE}}">
+                        </div>
+                        <div>
+                            <label for="">GISROU_PUNTOS</label>
+                            <textarea name="textarea-coordenadas" id="" cols="50"
+                                rows="10">{{dataruta.GISROU_PUNTOS}}</textarea>
+                        </div>
+                        <div>
+                            <label for="">RUC_OTT</label>
+                            <input type="text" value="{{dataruta.RUC_OTT}}" disabled>
+                        </div>
+                        <div>
+                            <label for="">RUC_PROVEEDOR</label>
+                            <input type="text" value="{{dataruta.RUC_PROVEEDOR}}" disabled>
+                        </div>
+
+                </div>
+                <div class="btn-modal">
+                    <a href="/rutas" name="modal-btn-cancelar">Cancelar</a>
+                    <input class="input-submit" type="submit" value="Actualizar">
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="overlay"></div>
+        <!-- MODAL PUNTOS -->
+        {% endif %}
         <!-- CONTENT -->
         <script src="{{url_for('static', filename='js/script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/despachos.js')}}"></script>
 </body>
 
 </html>

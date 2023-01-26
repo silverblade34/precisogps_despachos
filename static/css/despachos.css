@@ -1,0 +1,14 @@
+.date-filtro{
+    width: 30%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-preciso-despacho{
+	background-color: #3C91E6;
+	color: #fff;
+	padding: 8px 15px;
+	border-radius: 10px;
+	font-family: 'Poppins', sans-serif;
+	border: none;
+	cursor: pointer;
+}

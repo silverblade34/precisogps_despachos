@@ -39,14 +39,24 @@ def modal_ruta():
     else:
         return redirect(url_for('login'))
 
-@app.route('/enviar_ruta_smq', methods = ['GET'])
+@app.route('/enviar_ruta_smq', methods = ['GET', 'POST'])
 def enviar_ruta_smq():
     if 'user' in session:
         _rutasCL = RutasController()
-        resp = _rutasCL.enviarRutaSMQ(session['rutaestr'])
-        result = resp[1:-1]
-        message = ast.literal_eval(result)
-        return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = session['dataruta'], message = message)
+        if 'rutaeditar' in session:
+            print("-----------------------------------1")
+            datosclient = session['dataclientes']
+            dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
+            resp = _rutasCL.editarRutaSMQ(session['rutaeditar'], request.form['nombre-ruta'], request.form['textarea-coordenadas'])
+            result = resp[1:-1]
+            message = ast.literal_eval(result)
+            return render_template('rutas.html',  dataresumen = dataresumen, datosclient = datosclient, message = message)
+        else:
+            resp = _rutasCL.enviarRutaSMQ(session['rutaestr'])
+            result = resp[1:-1]
+            message = ast.literal_eval(result)
+            print(message)
+            return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = session['dataruta'], message = message)       
     else:
         return redirect(url_for('login'))
     

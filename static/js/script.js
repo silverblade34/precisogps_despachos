@@ -90,27 +90,5 @@ btns.forEach(btn => {
 })
 // Ventana de loader
 
-// Ventana de progress bar
 
-const btnprogress = document.querySelectorAll(".btn-progress-bar");
-const ventanaprogress = document.getElementById("progress-bar");
-
-btnprogress.forEach(btnpr => {
-	btnpr.addEventListener("click", function(){
-		// Mostrando el div
-		ventanaprogress.style.display = "block";
-	});
-})
-
-
-
-// Message alert de mostrar placas en despachos
-var btnplacas = document.getElementById("btn-message-placas");
-  var alertplacas = document.getElementById("alert-message-placas");
-
-  btnplacas.addEventListener("click", function() {
-    alertplacas.style.display = "none";
-  });
-
-// Message alert de mostrar placas en despachos
 

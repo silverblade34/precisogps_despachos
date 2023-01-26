@@ -27,25 +27,25 @@
         </a>
         <ul class="side-menu top">
             <li class="">
-                <a href="{{ url_for('menu')}}" class="btn-ingresar-preciso">
+                <a href="{{ url_for('menu')}}" class="btn-preciso-2">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Principal</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url_for('rutas')}}" class="btn-ingresar-preciso">
+                <a href="{{ url_for('rutas')}}" class="btn-preciso-2">
                     <i class='bx bxs-carousel'></i>
                     <span class="text">Rutas</span>
                 </a>
             </li>
             <li class="active">
-                <a href="#">
+                <a href="{{ url_for('paradas')}}" class="btn-preciso-2">
                     <i class='bx bxs-doughnut-chart'></i>
                     <span class="text">Paradas</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ url_for('despachos')}}" class="btn-preciso-2">
                     <i class='bx bxs-file-json'></i>
                     <span class="text">Despachos</span>
                 </a>
@@ -74,10 +74,6 @@
             <i class='bx bx-menu'></i>
             <a href="#" class="nav-link">Categories</a>
             <form action="#">
-                <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
-                </div>
             </form>
             <a href="#" class="notification">
                 <i class='bx bxs-bell'></i>
@@ -122,7 +118,7 @@
                                 <input class="input-seek" name="parada" type="search" placeholder="Parada...">
                                 <i class='bx bx-search-alt-2'></i>
                             </div>
-                            <input type="submit" class="btn-rutas-smq btn-ingresar-preciso" value="Buscar"/>
+                            <input type="submit" class="btn-rutas-smq btn-preciso-2" value="Buscar"/>
                         </form>
                         <!-- <div class="export__file">
                             <label for="export-file" class="export__file-btn" title="Export File"></label>
@@ -164,6 +160,7 @@
         <!-- MAIN -->
         <!-- CONTENT -->
         <script src="{{url_for('static', filename='js/script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/despachos.js')}}"></script>
 </body>
 
 </html>

@@ -2,6 +2,11 @@
 {% block body %}
 <!-- MAIN -->
 <main>
+    <!-- Ventana de loader -->
+    <div class="hidden-loader" id="hidden-loader-4">
+        <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
+    </div>
+    <!-- Ventana de loader -->
     <!-- Progress Bar de la carga de despachos -->
     <div class="progress-bar" id="progress-bar">
         <h4>Los despachos se estan enviando a SMQ...</h4>
@@ -26,12 +31,14 @@
         <i class='bx bx-error-circle'></i>
         <h2>Hay algunas placas que no estan cargadas en SMQ</h2>
         <p>Si decide proceder con la carga, las tramas que estan asociadas a estas placas no se cargaran: </p>
+        <span>
         {% for placa in messageplacas %}
-        <span>{{placa}}</span>
+        ({{placa}})
         {% endfor %}
-        <div>
-            <button class="btn-aceptar-alert" id="btn-message-placas">Cancelar carga</button>
-            <a href="/enviar_despachos" id="btn-progress-bar" class="btn-aceptar-alert btn-progress-bar">Continuar carga</a>
+        </span>
+        <div class="btn-aceptar-alert-div">
+            <a href="/cargar_despachos?codruta=null" class="btn-aceptar-alert" id="btn-message-placas">Cancelar carga</a>
+            <a href="/enviar_despachos" id="btn-progress-bar-2" class="btn-aceptar-alert btn-progress-bar">Continuar carga</a>
         </div>
     </div>
     {% endif %}
@@ -97,7 +104,7 @@
                     <label for="file">Cargue su archivo(.xlsx): </label>
                     <input class="file-form" type="file" name="file" id="file">
                     <div class="cont-button">
-                        <input class="btn solid btn-progress-bar" type="submit" id="btn-progress-bar" value="Ingresar" />
+                        <input class="btn solid" type="submit" id="btn-progress-bar" value="Validar despachos"/>
                     </div>
                 </form>
             </div>

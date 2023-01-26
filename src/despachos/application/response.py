@@ -67,17 +67,6 @@ class ResponseDespachos:
                 despachosEnviar = json.dumps(totalestrdespachos)
                 with open('datos.json', 'w') as f:
                     f.write(despachosEnviar)
-                    # -------------------------------------------------------------
-                    # if len(respuesta)<= 1:
-                    #     print(despachos["SM_PLACA"])
-                    # else:
-                    #     r=r+1
-                    #     print("Despachos correctos: "+str(r))
-                    # lista.append(respuesta)
-                    # cantdesp=cantdesp+1
-                    # print("Despachos enviados: "+ str(cantdesp))
-                    # #time.sleep(1)
-            #listaf=json.dumps(lista)
                 valor_orden = cantdesp + int(codigodespacho) + 1
                 actualizar = self.codigoDespachoActualizar("SM_DESPACHOS", valor_orden)
                 print("Nuevo orden despacho: "+ str(valor_orden))   
@@ -134,7 +123,7 @@ class ResponseDespachos:
         raw = response.json()
         return raw['data']
     
-    def responseConnectDespachos(self):
+    def responseConnectDespachos(self, despachosEnviar):
         headers={
             "Content-Type":"application/json"
             }
@@ -147,12 +136,21 @@ class ResponseDespachos:
             # carga el json en un objeto python
             data = json.load(file)
         # recorre el objeto python
-        cont = 0
+        respdespachos = []
         for item in data:
-            cont += 1
-        print(cont)
+            resp = self.responseConnectDespachos(item)
+            respdespachos.append(resp)
+        with open('datos.json', 'w') as f:
+            f.write(json.dumps(respdespachos))
         print(data[0])
         print(data[-1])
         return "Enviado"
+    
+    def responseMostrarDespachos(self, fecha, ruc):
+        # Formato fecha 2022-12-12T09:30:30
+        fechastr = str(fecha) + ":00"
+        response = requests.get(f'http://192.168.1.37:3222/api/v1/smq/listar/despachos?fecha={fechastr}&ruc={ruc}')
+        raw = response.json()
+        return raw['data']
 
    

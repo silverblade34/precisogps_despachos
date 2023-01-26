@@ -16,4 +16,8 @@ class DespachosController:
     def enviarDespachosSMQ(self):
         resp = self.response.responseEnviarDespachos()
         return resp
+    
+    def mostrarDespachosSMQ(self, fecha, ruc):
+        resp = self.response.responseMostrarDespachos(fecha, ruc) 
+        return resp
         
