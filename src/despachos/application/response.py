@@ -113,13 +113,13 @@ class ResponseDespachos:
         return listplacas
     
     def codigoDespachoMostrar(self):
-        response = requests.get(f'http://192.168.1.37:3222/api/v1/orden/mostrar')
+        response = requests.get(f'http://159.203.177.210:3020/api/v1/orden/mostrar')
         raw = response.json()
         ndespachos = raw['data']['SM_DESPACHOS']
         return ndespachos
     
     def codigoDespachoActualizar(self, nameorden, valor):
-        response = requests.get(f'http://192.168.1.37:3222/api/v1/orden/actualizar?nameorden={nameorden}&valorden={valor}')
+        response = requests.get(f'http://159.203.177.210:3020/api/v1/orden/actualizar?nameorden={nameorden}&valorden={valor}')
         raw = response.json()
         return raw['data']
     
@@ -149,7 +149,7 @@ class ResponseDespachos:
     def responseMostrarDespachos(self, fecha, ruc):
         # Formato fecha 2022-12-12T09:30:30
         fechastr = str(fecha) + ":00"
-        response = requests.get(f'http://192.168.1.37:3222/api/v1/smq/listar/despachos?fecha={fechastr}&ruc={ruc}')
+        response = requests.get(f'http://159.203.177.210:3020/api/v1/smq/listar/despachos?fecha={fechastr}&ruc={ruc}')
         raw = response.json()
         return raw['data']
 

@@ -4,14 +4,14 @@ import requests
 class ApiBotConnection:
     @staticmethod
     def apiListClient():
-        url = 'http://192.168.1.37:3222/api/v1/clientes/listar'
+        url = 'http://159.203.177.210:3020/api/v1/clientes/listar'
         clientes = requests.get(url)
         rawData =clientes.json()
         return rawData["data"]
 
     @staticmethod
     def apiListRoutes(token, depot, ruc):
-        url = f'http://192.168.1.37:3222/api/v1/rutas/listar?token={token}&depot={depot}&ruc={ruc}'
+        url = f'http://159.203.177.210:3020/api/v1/rutas/listar?token={token}&depot={depot}&ruc={ruc}'
         estr_ruta = requests.get(url)
         rawData = estr_ruta.json()
         print(json.dumps(rawData))

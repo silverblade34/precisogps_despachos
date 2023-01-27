@@ -32,7 +32,7 @@ class RutasResponse:
                 return ruta
 
     def responseMostrarRutasSMQ(self):
-        response = requests.get("http://192.168.1.37:3222/api/v1/ruta/smq")
+        response = requests.get("http://159.203.177.210:3020/api/v1/ruta/smq")
         data = response.json()
         return data['data']
     

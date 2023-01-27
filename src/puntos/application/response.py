@@ -18,7 +18,7 @@ class PuntosResponse:
         return resp
     
     def responseValidarRutas(self, codruta, ruc):
-        response = requests.get(f"http://192.168.1.37:3222/api/v1/smq/rutas/validar?codruta={codruta}&ruc={ruc}")
+        response = requests.get(f"http://159.203.177.210:3020/api/v1/smq/rutas/validar?codruta={codruta}&ruc={ruc}")
         raw = response.json()
         return raw['status']
     
@@ -37,7 +37,7 @@ class PuntosResponse:
         return listarutasresumen
     
     def responseMostrarPuntosSMQ(self):
-        response = requests.get("http://192.168.1.37:3222/api/v1/puntos/mostrar/smq")
+        response = requests.get("http://159.203.177.210:3020/api/v1/puntos/mostrar/smq")
         data = response.json()
         return data['data']
     
@@ -63,7 +63,7 @@ class PuntosResponse:
         return datafiltro
     
     def codigoEnvioActualizar(self, nameorden, valor):
-        response = requests.get(f'http://192.168.1.37:3222/api/v1/orden/actualizar?nameorden={nameorden}&valorden={valor}')
+        response = requests.get(f'http://159.203.177.210:3020/api/v1/orden/actualizar?nameorden={nameorden}&valorden={valor}')
         raw = response.json()
         return raw['data']
 
