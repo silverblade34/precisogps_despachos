@@ -50,6 +50,7 @@ def enviar_ruta_smq():
             resp = _rutasCL.editarRutaSMQ(session['rutaeditar'], request.form['nombre-ruta'], request.form['textarea-coordenadas'])
             result = resp[1:-1]
             message = ast.literal_eval(result)
+            session.pop('rutaeditar', None)
             return render_template('rutas.html',  dataresumen = dataresumen, datosclient = datosclient, message = message)
         else:
             resp = _rutasCL.enviarRutaSMQ(session['rutaestr'])
@@ -60,9 +61,3 @@ def enviar_ruta_smq():
     else:
         return redirect(url_for('login'))
     
-@app.route('/mostrar_rutas_smq', methods = ['GET'])
-def mostrar_rutas_smq():
-    if 'user' in session:
-        pass
-    else:
-        return redirect(url_for('login'))

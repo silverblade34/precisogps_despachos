@@ -22,6 +22,7 @@ def menu():
         if 'dataclientes' in session:
             session.pop('dataruta', None)
             session.pop('dataempresa', None)
+            session.pop('datapuntos', None)
             datosclient = session['dataclientes']
             return render_template('index.html', datosclient = datosclient)
         else:
@@ -61,7 +62,7 @@ def paradas():
         _rutasCL = PuntosController()
         if request.method == 'POST':
             dataresumen = _rutasCL.resumenPuntosSMQ(datosclient) 
-            datafiltro = _rutasCL.filtroPuntosSMQ(request.form['parada'], request.form['select-ruc'], dataresumen)  
+            datafiltro = _rutasCL.filtroPuntosSMQ(request.form['parada'], request.form['ruta'], request.form['select-ruc'], dataresumen)  
             return render_template('paradas.html', dataresumen = datafiltro, datosclient = datosclient)
         else:
             dataresumen = _rutasCL.resumenPuntosSMQ(datosclient)

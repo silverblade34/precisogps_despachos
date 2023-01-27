@@ -27,7 +27,7 @@ input {
   content: '';
   position: absolute;
   height: 2000px;
-  width: 2000px;
+  min-width: 2000px;
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
@@ -263,7 +263,7 @@ form.sign-up-form {
 
 .right-panel .content,
 .right-panel .image {
-  transform: translateX(800px);
+  transform: translateX(500px);
   
 }
 
@@ -276,7 +276,7 @@ form.sign-up-form {
 
 .container.sign-up-mode .left-panel .image,
 .container.sign-up-mode .left-panel .content {
-  transform: translateX(-800px);
+  transform: translateX(-500px);
 }
 .container.sign-up-mode .left-panel {
   pointer-events: none;

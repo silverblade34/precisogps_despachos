@@ -4,8 +4,11 @@ from src.puntos.application.response import PuntosResponse
 class PuntosController:
 
     def listarPuntos(self, token, depot, ruc, ruta):
+        print("----------------------------8")
         connApi = ApiConnectionPreciso()
+        print("----------------------------9")
         data = connApi.consumirPuntos(token, depot, ruc, ruta)
+        print("----------------------------10")
         return data
 
     def enviarPuntos(self, puntosestr):
@@ -23,9 +26,9 @@ class PuntosController:
         resp = response.resumenPuntosSMQ(dataclientes)
         return resp
 
-    def filtroPuntosSMQ(self, parada, empresa, dataresumen):
+    def filtroPuntosSMQ(self, parada, ruta, empresa, dataresumen):
         resp = PuntosResponse()
-        data = resp.responseFiltrosPuntos(parada, empresa, dataresumen)
+        data = resp.responseFiltrosPuntos(parada, ruta, empresa, dataresumen)
         return data
     
     

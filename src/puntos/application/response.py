@@ -7,12 +7,14 @@ class PuntosResponse:
         pass
     
     def responseEnviarPuntos(self, puntosestr):
+        ordenenvio = int(puntosestr[-1]['SM_ORDEN']) + 1
         headers={
             "Content-Type":"application/json"
             }
         puntos = json.dumps(puntosestr)
         response = requests.post(f'http://smmonitoreo.quito.gob.ec:444/api/cargapc/?token=A1B8B0F9-490A-4E3B-BEC3-56FC54901AFA', puntos , headers=headers)
         resp = response.json()
+        actualizar = self.codigoEnvioActualizar("SM_ORDEN_PC", ordenenvio)
         return resp
     
     def responseValidarRutas(self, codruta, ruc):
@@ -39,20 +41,31 @@ class PuntosResponse:
         data = response.json()
         return data['data']
     
-    def responseFiltrosPuntos(self, codruta, empresa, dataresumen):
+    def responseFiltrosPuntos(self, nameparada, ruta, empresa, dataresumen):
+        print(nameparada)
+        print(ruta)
+        print(empresa)
         datafiltro = []
         cont = 0
         for parada in dataresumen:
-            codruta2 = codruta.replace(" ","").lower()
+            nameparada2 = nameparada.replace(" ","").lower()
             puntodata = parada['NOMBRE_PC'].replace(" ","").lower()
-            distance = Levenshtein.distance(puntodata, codruta2)
-            if distance < 3 or parada['RUC_OTT'] == empresa:
+            distance1 = Levenshtein.distance(puntodata, nameparada2)
+            rutaname = ruta.replace(" ","").lower()
+            rutadata = parada['CODIGO_RUTA'].replace(" ","").lower()
+            # distance2 = Levenshtein.distance(rutadata, rutaname)
+            if distance1 < 3 or parada['RUC_OTT'] == empresa or rutaname == rutadata:
+                print("---------------------------1")
                 datafiltro.append(parada)
                 cont += 1
         if cont == 0:
             datafiltro = dataresumen
-        
         return datafiltro
+    
+    def codigoEnvioActualizar(self, nameorden, valor):
+        response = requests.get(f'http://192.168.1.37:3222/api/v1/orden/actualizar?nameorden={nameorden}&valorden={valor}')
+        raw = response.json()
+        return raw['data']
 
 
     

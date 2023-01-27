@@ -1,0 +1,520 @@
+{
+    "SM_RUC_OTT": "1790293092001",
+    "SM_CODIGO_RUTA": "RUTA50",
+    "SM_CI_CONDUCTOR": "",
+    "SM_RUC_PROVEEDOR": "1716024474001",
+    "SM_CODIGO_DESPACHO": "9510024",
+    "SM_ESTADO_DESPACHO": "A",
+    "SM_DESCRIPCION_DESPACHO": "",
+    "SM_OBSERVACION_DESPACHO": "",
+    "SM_PLACA": "PUJ0179",
+    "SM_PC": [
+        {
+            "SM_CODIGO_PC": "333694",
+            "SM_HORA_DESPACHO": "2022-11-09T13:30:00"
+        },
+        {
+            "SM_CODIGO_PC": "333688",
+            "SM_HORA_DESPACHO": "2022-11-09T13:32:00"
+        },
+        {
+            "SM_CODIGO_PC": "398254",
+            "SM_HORA_DESPACHO": "2022-11-09T13:40:00"
+        },
+        {
+            "SM_CODIGO_PC": "334150",
+            "SM_HORA_DESPACHO": "2022-11-09T13:53:00"
+        },
+        {
+            "SM_CODIGO_PC": "333692",
+            "SM_HORA_DESPACHO": "2022-11-09T14:14:00"
+        },
+        {
+            "SM_CODIGO_PC": "398959",
+            "SM_HORA_DESPACHO": "2022-11-09T14:27:00"
+        },
+        {
+            "SM_CODIGO_PC": "334156",
+            "SM_HORA_DESPACHO": "2022-11-09T14:43:00"
+        },
+        {
+            "SM_CODIGO_PC": "398256",
+            "SM_HORA_DESPACHO": "2022-11-09T14:47:00"
+        },
+        {
+            "SM_CODIGO_PC": "333687",
+            "SM_HORA_DESPACHO": "2022-11-09T14:59:00"
+        },
+        {
+            "SM_CODIGO_PC": "333691",
+            "SM_HORA_DESPACHO": "2022-11-09T15:09:00"
+        },
+        {
+            "SM_CODIGO_PC": "403356",
+            "SM_HORA_DESPACHO": "2022-11-09T15:29:00"
+        },
+        {
+            "SM_CODIGO_PC": "334144",
+            "SM_HORA_DESPACHO": "2022-11-09T15:38:00"
+        },
+        {
+            "SM_CODIGO_PC": "398897",
+            "SM_HORA_DESPACHO": "2022-11-09T15:45:00"
+        }
+    ]
+}
+{
+    "SM_RUC_OTT": "1790293092001",
+    "SM_CODIGO_RUTA": "RUTA50",
+    "SM_CI_CONDUCTOR": "",
+    "SM_RUC_PROVEEDOR": "1716024474001",
+    "SM_CODIGO_DESPACHO": "9510024",
+    "SM_ESTADO_DESPACHO": "A",
+    "SM_DESCRIPCION_DESPACHO": "",
+    "SM_OBSERVACION_DESPACHO": "",
+    "SM_PLACA": "PAC4651",
+    "SM_PC": [
+        {
+            "SM_CODIGO_PC": "333694",
+            "SM_HORA_DESPACHO": "2022-11-09T13:37:00"
+        },
+        {
+            "SM_CODIGO_PC": "333688",
+            "SM_HORA_DESPACHO": "2022-11-09T13:39:00"
+        },
+        {
+            "SM_CODIGO_PC": "398254",
+            "SM_HORA_DESPACHO": "2022-11-09T13:47:00"
+        },
+        {
+            "SM_CODIGO_PC": "334150",
+            "SM_HORA_DESPACHO": "2022-11-09T14:00:00"
+        },
+        {
+            "SM_CODIGO_PC": "333692",
+            "SM_HORA_DESPACHO": "2022-11-09T14:21:00"
+        },
+        {
+            "SM_CODIGO_PC": "398959",
+            "SM_HORA_DESPACHO": "2022-11-09T14:34:00"
+        },
+        {
+            "SM_CODIGO_PC": "334156",
+            "SM_HORA_DESPACHO": "2022-11-09T14:50:00"
+        },
+        {
+            "SM_CODIGO_PC": "398256",
+            "SM_HORA_DESPACHO": "2022-11-09T14:54:00"
+        },
+        {
+            "SM_CODIGO_PC": "333687",
+            "SM_HORA_DESPACHO": "2022-11-09T15:06:00"
+        },
+        {
+            "SM_CODIGO_PC": "333691",
+            "SM_HORA_DESPACHO": "2022-11-09T15:16:00"
+        },
+        {
+            "SM_CODIGO_PC": "403356",
+            "SM_HORA_DESPACHO": "2022-11-09T15:36:00"
+        },
+        {
+            "SM_CODIGO_PC": "334144",
+            "SM_HORA_DESPACHO": "2022-11-09T15:45:00"
+        },
+        {
+            "SM_CODIGO_PC": "398897",
+            "SM_HORA_DESPACHO": "2022-11-09T15:52:00"
+        }
+    ]
+}
+{
+    "SM_RUC_OTT": "1790293092001",
+    "SM_CODIGO_RUTA": "RUTA50",
+    "SM_CI_CONDUCTOR": "",
+    "SM_RUC_PROVEEDOR": "1716024474001",
+    "SM_CODIGO_DESPACHO": "9510024",
+    "SM_ESTADO_DESPACHO": "A",
+    "SM_DESCRIPCION_DESPACHO": "",
+    "SM_OBSERVACION_DESPACHO": "",
+    "SM_PLACA": "PAC3515",
+    "SM_PC": [
+        {
+            "SM_CODIGO_PC": "333694",
+            "SM_HORA_DESPACHO": "2022-11-09T13:44:00"
+        },
+        {
+            "SM_CODIGO_PC": "333688",
+            "SM_HORA_DESPACHO": "2022-11-09T13:46:00"
+        },
+        {
+            "SM_CODIGO_PC": "398254",
+            "SM_HORA_DESPACHO": "2022-11-09T13:54:00"
+        },
+        {
+            "SM_CODIGO_PC": "334150",
+            "SM_HORA_DESPACHO": "2022-11-09T14:07:00"
+        },
+        {
+            "SM_CODIGO_PC": "333692",
+            "SM_HORA_DESPACHO": "2022-11-09T14:28:00"
+        },
+        {
+            "SM_CODIGO_PC": "398959",
+            "SM_HORA_DESPACHO": "2022-11-09T14:41:00"
+        },
+        {
+            "SM_CODIGO_PC": "334156",
+            "SM_HORA_DESPACHO": "2022-11-09T14:57:00"
+        },
+        {
+            "SM_CODIGO_PC": "398256",
+            "SM_HORA_DESPACHO": "2022-11-09T15:01:00"
+        },
+        {
+            "SM_CODIGO_PC": "333687",
+            "SM_HORA_DESPACHO": "2022-11-09T15:13:00"
+        },
+        {
+            "SM_CODIGO_PC": "333691",
+            "SM_HORA_DESPACHO": "2022-11-09T15:23:00"
+        },
+        {
+            "SM_CODIGO_PC": "403356",
+            "SM_HORA_DESPACHO": "2022-11-09T15:43:00"
+        },
+        {
+            "SM_CODIGO_PC": "334144",
+            "SM_HORA_DESPACHO": "2022-11-09T15:52:00"
+        },
+        {
+            "SM_CODIGO_PC": "398897",
+            "SM_HORA_DESPACHO": "2022-11-09T15:59:00"
+        }
+    ]
+}
+{
+    "SM_RUC_OTT": "1790293092001",
+    "SM_CODIGO_RUTA": "RUTA50",
+    "SM_CI_CONDUCTOR": "",
+    "SM_RUC_PROVEEDOR": "1716024474001",
+    "SM_CODIGO_DESPACHO": "9510024",
+    "SM_ESTADO_DESPACHO": "A",
+    "SM_DESCRIPCION_DESPACHO": "",
+    "SM_OBSERVACION_DESPACHO": "",
+    "SM_PLACA": "PAC5849",
+    "SM_PC": [
+        {
+            "SM_CODIGO_PC": "333694",
+            "SM_HORA_DESPACHO": "2022-11-09T13:58:00"
+        },
+        {
+            "SM_CODIGO_PC": "333688",
+            "SM_HORA_DESPACHO": "2022-11-09T14:00:00"
+        },
+        {
+            "SM_CODIGO_PC": "398254",
+            "SM_HORA_DESPACHO": "2022-11-09T14:08:00"
+        },
+        {
+            "SM_CODIGO_PC": "334150",
+            "SM_HORA_DESPACHO": "2022-11-09T14:21:00"
+        },
+        {
+            "SM_CODIGO_PC": "333692",
+            "SM_HORA_DESPACHO": "2022-11-09T14:42:00"
+        },
+        {
+            "SM_CODIGO_PC": "398959",
+            "SM_HORA_DESPACHO": "2022-11-09T14:55:00"
+        },
+        {
+            "SM_CODIGO_PC": "334156",
+            "SM_HORA_DESPACHO": "2022-11-09T15:11:00"
+        },
+        {
+            "SM_CODIGO_PC": "398256",
+            "SM_HORA_DESPACHO": "2022-11-09T15:15:00"
+        },
+        {
+            "SM_CODIGO_PC": "333687",
+            "SM_HORA_DESPACHO": "2022-11-09T15:27:00"
+        },
+        {
+            "SM_CODIGO_PC": "333691",
+            "SM_HORA_DESPACHO": "2022-11-09T15:37:00"
+        },
+        {
+            "SM_CODIGO_PC": "403356",
+            "SM_HORA_DESPACHO": "2022-11-09T15:57:00"
+        },
+        {
+            "SM_CODIGO_PC": "334144",
+            "SM_HORA_DESPACHO": "2022-11-09T16:06:00"
+        },
+        {
+            "SM_CODIGO_PC": "398897",
+            "SM_HORA_DESPACHO": "2022-11-09T16:13:00"
+        }
+    ]
+}
+{
+    "SM_RUC_OTT": "1790293092001",
+    "SM_CODIGO_RUTA": "RUTA50",
+    "SM_CI_CONDUCTOR": "",
+    "SM_RUC_PROVEEDOR": "1716024474001",
+    "SM_CODIGO_DESPACHO": "9510024",
+    "SM_ESTADO_DESPACHO": "A",
+    "SM_DESCRIPCION_DESPACHO": "",
+    "SM_OBSERVACION_DESPACHO": "",
+    "SM_PLACA": "PAC7092",
+    "SM_PC": [
+        {
+            "SM_CODIGO_PC": "333694",
+            "SM_HORA_DESPACHO": "2022-11-09T14:05:00"
+        },
+        {
+            "SM_CODIGO_PC": "333688",
+            "SM_HORA_DESPACHO": "2022-11-09T14:07:00"
+        },
+        {
+            "SM_CODIGO_PC": "398254",
+            "SM_HORA_DESPACHO": "2022-11-09T14:15:00"
+        },
+        {
+            "SM_CODIGO_PC": "334150",
+            "SM_HORA_DESPACHO": "2022-11-09T14:28:00"
+        },
+        {
+            "SM_CODIGO_PC": "333692",
+            "SM_HORA_DESPACHO": "2022-11-09T14:49:00"
+        },
+        {
+            "SM_CODIGO_PC": "398959",
+            "SM_HORA_DESPACHO": "2022-11-09T15:02:00"
+        },
+        {
+            "SM_CODIGO_PC": "334156",
+            "SM_HORA_DESPACHO": "2022-11-09T15:18:00"
+        },
+        {
+            "SM_CODIGO_PC": "398256",
+            "SM_HORA_DESPACHO": "2022-11-09T15:22:00"
+        },
+        {
+            "SM_CODIGO_PC": "333687",
+            "SM_HORA_DESPACHO": "2022-11-09T15:34:00"
+        },
+        {
+            "SM_CODIGO_PC": "333691",
+            "SM_HORA_DESPACHO": "2022-11-09T15:44:00"
+        },
+        {
+            "SM_CODIGO_PC": "403356",
+            "SM_HORA_DESPACHO": "2022-11-09T16:04:00"
+        },
+        {
+            "SM_CODIGO_PC": "334144",
+            "SM_HORA_DESPACHO": "2022-11-09T16:13:00"
+        },
+        {
+            "SM_CODIGO_PC": "398897",
+            "SM_HORA_DESPACHO": "2022-11-09T16:20:00"
+        }
+    ]
+}
+{
+    "SM_RUC_OTT": "1790293092001",
+    "SM_CODIGO_RUTA": "RUTA50",
+    "SM_CI_CONDUCTOR": "",
+    "SM_RUC_PROVEEDOR": "1716024474001",
+    "SM_CODIGO_DESPACHO": "9510024",
+    "SM_ESTADO_DESPACHO": "A",
+    "SM_DESCRIPCION_DESPACHO": "",
+    "SM_OBSERVACION_DESPACHO": "",
+    "SM_PLACA": "PAC8235",
+    "SM_PC": [
+        {
+            "SM_CODIGO_PC": "333694",
+            "SM_HORA_DESPACHO": "2022-11-09T14:12:00"
+        },
+        {
+            "SM_CODIGO_PC": "333688",
+            "SM_HORA_DESPACHO": "2022-11-09T14:14:00"
+        },
+        {
+            "SM_CODIGO_PC": "398254",
+            "SM_HORA_DESPACHO": "2022-11-09T14:22:00"
+        },
+        {
+            "SM_CODIGO_PC": "334150",
+            "SM_HORA_DESPACHO": "2022-11-09T14:35:00"
+        },
+        {
+            "SM_CODIGO_PC": "333692",
+            "SM_HORA_DESPACHO": "2022-11-09T14:56:00"
+        },
+        {
+            "SM_CODIGO_PC": "398959",
+            "SM_HORA_DESPACHO": "2022-11-09T15:09:00"
+        },
+        {
+            "SM_CODIGO_PC": "334156",
+            "SM_HORA_DESPACHO": "2022-11-09T15:25:00"
+        },
+        {
+            "SM_CODIGO_PC": "398256",
+            "SM_HORA_DESPACHO": "2022-11-09T15:29:00"
+        },
+        {
+            "SM_CODIGO_PC": "333687",
+            "SM_HORA_DESPACHO": "2022-11-09T15:41:00"
+        },
+        {
+            "SM_CODIGO_PC": "333691",
+            "SM_HORA_DESPACHO": "2022-11-09T15:51:00"
+        },
+        {
+            "SM_CODIGO_PC": "403356",
+            "SM_HORA_DESPACHO": "2022-11-09T16:11:00"
+        },
+        {
+            "SM_CODIGO_PC": "334144",
+            "SM_HORA_DESPACHO": "2022-11-09T16:20:00"
+        },
+        {
+            "SM_CODIGO_PC": "398897",
+            "SM_HORA_DESPACHO": "2022-11-09T16:27:00"
+        }
+    ]
+}
+{
+    "SM_RUC_OTT": "1790293092001",
+    "SM_CODIGO_RUTA": "RUTA50",
+    "SM_CI_CONDUCTOR": "",
+    "SM_RUC_PROVEEDOR": "1716024474001",
+    "SM_CODIGO_DESPACHO": "9510024",
+    "SM_ESTADO_DESPACHO": "A",
+    "SM_DESCRIPCION_DESPACHO": "",
+    "SM_OBSERVACION_DESPACHO": "",
+    "SM_PLACA": "PUD0356",
+    "SM_PC": [
+        {
+            "SM_CODIGO_PC": "333694",
+            "SM_HORA_DESPACHO": "2022-11-09T14:19:00"
+        },
+        {
+            "SM_CODIGO_PC": "333688",
+            "SM_HORA_DESPACHO": "2022-11-09T14:21:00"
+        },
+        {
+            "SM_CODIGO_PC": "398254",
+            "SM_HORA_DESPACHO": "2022-11-09T14:29:00"
+        },
+        {
+            "SM_CODIGO_PC": "334150",
+            "SM_HORA_DESPACHO": "2022-11-09T14:42:00"
+        },
+        {
+            "SM_CODIGO_PC": "333692",
+            "SM_HORA_DESPACHO": "2022-11-09T15:03:00"
+        },
+        {
+            "SM_CODIGO_PC": "398959",
+            "SM_HORA_DESPACHO": "2022-11-09T15:16:00"
+        },
+        {
+            "SM_CODIGO_PC": "334156",
+            "SM_HORA_DESPACHO": "2022-11-09T15:32:00"
+        },
+        {
+            "SM_CODIGO_PC": "398256",
+            "SM_HORA_DESPACHO": "2022-11-09T15:36:00"
+        },
+        {
+            "SM_CODIGO_PC": "333687",
+            "SM_HORA_DESPACHO": "2022-11-09T15:48:00"
+        },
+        {
+            "SM_CODIGO_PC": "333691",
+            "SM_HORA_DESPACHO": "2022-11-09T15:58:00"
+        },
+        {
+            "SM_CODIGO_PC": "403356",
+            "SM_HORA_DESPACHO": "2022-11-09T16:18:00"
+        },
+        {
+            "SM_CODIGO_PC": "334144",
+            "SM_HORA_DESPACHO": "2022-11-09T16:27:00"
+        },
+        {
+            "SM_CODIGO_PC": "398897",
+            "SM_HORA_DESPACHO": "2022-11-09T16:34:00"
+        }
+    ]
+}
+{
+    "SM_RUC_OTT": "1790293092001",
+    "SM_CODIGO_RUTA": "RUTA50",
+    "SM_CI_CONDUCTOR": "",
+    "SM_RUC_PROVEEDOR": "1716024474001",
+    "SM_CODIGO_DESPACHO": "9510024",
+    "SM_ESTADO_DESPACHO": "A",
+    "SM_DESCRIPCION_DESPACHO": "",
+    "SM_OBSERVACION_DESPACHO": "",
+    "SM_PLACA": "PAB5678",
+    "SM_PC": [
+        {
+            "SM_CODIGO_PC": "333694",
+            "SM_HORA_DESPACHO": "2022-11-09T14:33:00"
+        },
+        {
+            "SM_CODIGO_PC": "333688",
+            "SM_HORA_DESPACHO": "2022-11-09T14:35:00"
+        },
+        {
+            "SM_CODIGO_PC": "398254",
+            "SM_HORA_DESPACHO": "2022-11-09T14:43:00"
+        },
+        {
+            "SM_CODIGO_PC": "334150",
+            "SM_HORA_DESPACHO": "2022-11-09T14:56:00"
+        },
+        {
+            "SM_CODIGO_PC": "333692",
+            "SM_HORA_DESPACHO": "2022-11-09T15:17:00"
+        },
+        {
+            "SM_CODIGO_PC": "398959",
+            "SM_HORA_DESPACHO": "2022-11-09T15:30:00"
+        },
+        {
+            "SM_CODIGO_PC": "334156",
+            "SM_HORA_DESPACHO": "2022-11-09T15:46:00"
+        },
+        {
+            "SM_CODIGO_PC": "398256",
+            "SM_HORA_DESPACHO": "2022-11-09T15:50:00"
+        },
+        {
+            "SM_CODIGO_PC": "333687",
+            "SM_HORA_DESPACHO": "2022-11-09T16:02:00"
+        },
+        {
+            "SM_CODIGO_PC": "333691",
+            "SM_HORA_DESPACHO": "2022-11-09T16:12:00"
+        },
+        {
+            "SM_CODIGO_PC": "403356",
+            "SM_HORA_DESPACHO": "2022-11-09T16:32:00"
+        },
+        {
+            "SM_CODIGO_PC": "334144",
+            "SM_HORA_DESPACHO": "2022-11-09T16:41:00"
+        },
+        {
+            "SM_CODIGO_PC": "398897",
+            "SM_HORA_DESPACHO": "2022-11-09T16:48:00"
+        }
+    ]
+}

@@ -80,7 +80,7 @@
                 <span class="num">0</span>
             </a>
             <a href="#" class="profile">
-                <img src="{{url_for('static', filename='img/people.png')}}">
+                <img src="{{url_for('static', filename='img/user-img-web.png')}}">
             </a>
         </nav>
         <!-- MAIN -->
@@ -103,7 +103,7 @@
                 <div class="table">
                     <section class="table__header">
                         <h1>Filtros</h1>
-                        <form action="{{url_for('paradas')}}" method="POST">
+                        <form action="{{url_for('paradas')}}" class="form-filtro-paradas" method="POST">
                             <div>
                                 <label for="select">Seleccione una empresa: </label>
                                 <select class="select" name="select-ruc" id="select">
@@ -113,10 +113,13 @@
                                     {% endfor %}
                                 </select>
                             </div>
-                            <label for="">Buscar Parada: </label>
-                            <div class="input-group">
-                                <input class="input-seek" name="parada" type="search" placeholder="Parada...">
-                                <i class='bx bx-search-alt-2'></i>
+                            <div class="input-text">
+                                <label for="">Parada: </label>
+                                <input class="input-seek" name="parada" type="search" placeholder="Buscar Parada...">
+                            </div>                     
+                            <div class="input-text">
+                                <label for="">Ruta: </label>
+                                <input class="input-seek" name="ruta" type="search" placeholder="Buscar Ruta...">
                             </div>
                             <input type="submit" class="btn-rutas-smq btn-preciso-2" value="Buscar"/>
                         </form>

@@ -694,3 +694,10 @@ body {
 .alert-message-menu h2 span{
 	text-transform: lowercase;
 }
+
+.form-filtro-paradas .input-text input{
+	border: 1px solid rgb(199, 199, 199);
+	border-radius: 5px;
+	padding: 5px;
+	font-family: 'Poppins', sans-serif;
+}
