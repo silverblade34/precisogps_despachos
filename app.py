@@ -1,6 +1,6 @@
-from flask import Flask, render_template # Se importa la clase Flask
-from flask_cors import CORS
-app = Flask(__name__) # Inicializamos la aplicacion
+from flask import Flask, render_template   # Se importa la clase Flask
+from flask_cors import CORS       
+app = Flask(__name__) # Inicializamos la aplicacion 
 
 CORS(app)
 import routes.paginas_route
