@@ -16,7 +16,7 @@ COPY . .
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Establecer la puerta de escucha en el contenedor
-EXPOSE 80
+EXPOSE 5000
 
 # Ejecutar comandos
 CMD ["sh", "-c", "pip install -r requirements.txt && python app.py & nginx -g 'daemon off;'"]
