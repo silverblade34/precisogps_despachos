@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 from datetime import datetime
-import json
+import json, time
 from flask import Flask, request, render_template, redirect, url_for, session
 
 class ResponseDespachos:
@@ -144,7 +144,7 @@ class ResponseDespachos:
             f.write(json.dumps(respdespachos))
         print(data[0])
         print(data[-1])
-        return "Enviado"
+        return "Los despachos se terminaron de enviar"
     
     def responseMostrarDespachos(self, fecha, ruc):
         # Formato fecha 2022-12-12T09:30:30

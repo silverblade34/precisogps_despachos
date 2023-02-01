@@ -9,12 +9,20 @@
     <!-- Ventana de loader -->
     <!-- Progress Bar de la carga de despachos -->
     <div class="progress-bar" id="progress-bar">
-        <h4>Los despachos se estan enviando a SMQ...</h4>
+        <h4>Se esta validando las placas...</h4>
         <div>
             <img src="{{url_for('static', filename='img/gif-progress-bar.gif')}}" alt="">
         </div>
     </div>
     <!-- Progress Bar de la carga de despachos -->
+    <!-- Progress Bar de la carga de despachos 2-->
+    <div class="progress-bar" id="progressbar2">
+        <h4>Los despachos se estan enviando a SMQ...</h4>
+        <div>
+            <img src="{{url_for('static', filename='img/gif-progress-bar.gif')}}" alt="">
+        </div>
+    </div>
+    <!-- Progress Bar de la carga de despachos 2-->
     <!-- Message alert validarRuta -->
     {%if messagevalidar %}
     <div class="alert-message">
@@ -38,7 +46,7 @@
         </span>
         <div class="btn-aceptar-alert-div">
             <a href="/cargar_despachos?codruta=null" class="btn-aceptar-alert" id="btn-message-placas">Cancelar carga</a>
-            <a href="/enviar_despachos" id="btn-progress-bar-2" class="btn-aceptar-alert btn-progress-bar">Continuar carga</a>
+            <a href="/enviar_despachos" onclick="document.getElementById('alert-message-placas').style.display = 'none';" class="btn-aceptar-alert btn-progress-bar-2">Continuar carga</a>
         </div>
     </div>
     {% endif %}
@@ -104,7 +112,7 @@
                     <label for="file">Cargue su archivo(.xlsx): </label>
                     <input class="file-form" type="file" name="file" id="file">
                     <div class="cont-button">
-                        <input class="btn solid" type="submit" id="btn-progress-bar" value="Validar despachos"/>
+                        <input class="btn solid" type="submit" onclick="document.getElementById('progress-bar').style.display = 'block';" value="Validar despachos"/>
                     </div>
                 </form>
             </div>

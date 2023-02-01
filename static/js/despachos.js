@@ -12,24 +12,16 @@ btns2.forEach(btn2 => {
 })
 
 
-// Ventana de progress bar
+// // Ventana de progress bar
 
-const btnprogress = document.getElementById("btn-progress-bar");
-const ventanaprogress = document.getElementById("progress-bar");
+// const btnprogress = document.getElementById("btn-progress-bar");
+// const ventanaprogress = document.getElementById("progress-bar");
 
-btnprogress.addEventListener("click", function(){
-		// Mostrando el div
-		ventanaprogress.style.display = "block";
-});
+// btnprogress.addEventListener("click", function(){
+// 		// Mostrando el div
+// 		ventanaprogress.style.display = "block";
+// });
 
-// Ventana de progress bar
-
-const btnprogress2 = document.getElementById("btn-progress-bar-2");
-
-btnprogress2.addEventListener("click", function(){
-    // Mostrando el div
-    ventanaprogress.style.display = "block";
-});
 
 
 // Message alert de mostrar placas en despachos

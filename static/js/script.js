@@ -24,57 +24,6 @@ menuBar.addEventListener('click', function () {
 
 
 
-
-
-
-
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
-
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-		} else {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		}
-	}
-})
-
-
-
-
-
-if(window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-	searchForm.classList.remove('show');
-}
-
-
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		searchForm.classList.remove('show');
-	}
-})
-
-
-
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
-
 // Ventana de loader
 
 const btns = document.querySelectorAll(".btn-ingresar-preciso");
@@ -89,6 +38,29 @@ btns.forEach(btn => {
 
 })
 // Ventana de loader
+
+// Ventana de progress bar
+
+// const btnprogress2 = document.getElementById("btn-progress-bar-2");
+// const ventanaprogress2 = document.getElementById("progress-bar-2");
+
+// btnprogress2.addEventListener("click", function(){
+//     // Mostrando el div
+//     ventanaprogress2.style.display = "block";
+// });
+
+const btnprogress2  = document.querySelectorAll(".btn-progress-bar-2");
+const ventanaprogress2 = document.getElementById("progressbar2");
+
+btnprogress2.forEach(btnp => {
+	btnp.addEventListener("click", function(){
+		console.log("----------------------------1")
+		// Mostrando el div
+		ventanaprogress2.style.display = "block";
+	});
+
+})
+
 
 
 
