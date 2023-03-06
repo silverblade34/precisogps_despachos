@@ -38,20 +38,13 @@ def rutas():
     if 'user' in session:
         datosclient = session['dataclientes']
         _rutasCL = RutasController()
-        codruta = request.args.get('codruta')
-        if codruta:
+        if request.method == 'POST':
             dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-            dataruta = _rutasCL.mostrarRutaSMQ(codruta)
-            session['rutaeditar'] = dataruta
-            return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient, dataruta = dataruta)
+            datafiltro = _rutasCL.filtroRutasSMQ(request.form['codruta'], request.form['select-ruc'], dataresumen)
+            return render_template('rutas.html', dataresumen = datafiltro, datosclient = datosclient)
         else:
-            if request.method == 'POST':
-                dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-                datafiltro = _rutasCL.filtroRutasSMQ(request.form['codruta'], request.form['select-ruc'], dataresumen)
-                return render_template('rutas.html', dataresumen = datafiltro, datosclient = datosclient)
-            else:
-                dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-                return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient)
+            dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
+            return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient)
     else:
         return redirect(url_for('login'))
     

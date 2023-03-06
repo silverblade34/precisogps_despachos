@@ -69,22 +69,20 @@ class RutasResponse:
             if ruta['CODIGO_RUTA'] == codruta:
                 return ruta
             
-    def responseEditarRutasSMQ(self, rutaeditar, nombreruta, coordenadas):
+    def responseEditarRutasSMQ(self,dataanterior, data):
         rutaeliminar = {}
-        rutaeliminar['SM_CODIGO_RUTA'] = rutaeditar['CODIGO_RUTA']
-        rutaeliminar['SM_COORDENADAS'] = rutaeditar['GISROU_PUNTOS']
+        rutaeliminar['SM_CODIGO_RUTA'] = dataanterior['CODIGO_RUTA']
+        rutaeliminar['SM_COORDENADAS'] = dataanterior['GISROU_PUNTOS']
         rutaeliminar['SM_ESTADO'] = "X"
-        rutaeliminar['SM_NOMBRE'] = rutaeditar['GISROU_NOMBRE']
-        rutaeliminar['SM_RUC_EMPRESA'] = rutaeditar['RUC_OTT']
-        rutaeliminar['SM_RUC_PROVEEDOR'] = rutaeditar['RUC_PROVEEDOR']
+        rutaeliminar['SM_NOMBRE'] = dataanterior['GISROU_NOMBRE']
+        rutaeliminar['SM_RUC_EMPRESA'] = dataanterior['RUC_OTT']
+        rutaeliminar['SM_RUC_PROVEEDOR'] = dataanterior['RUC_PROVEEDOR']
         eliminar = self.responseEnviarRuta(rutaeliminar)
-        print(eliminar)
         rutanueva = rutaeliminar
         rutanueva['SM_ESTADO'] = "A"
-        rutanueva['SM_COORDENADAS'] = coordenadas
-        rutanueva['SM_NOMBRE'] = nombreruta
+        rutanueva['SM_COORDENADAS'] = data['SM_COORDENADAS']
+        rutanueva['SM_NOMBRE'] = data['SM_NOMBRE']
         actualizado = self.responseEnviarRuta(rutanueva)
-        print(actualizado)
         return actualizado
 
 

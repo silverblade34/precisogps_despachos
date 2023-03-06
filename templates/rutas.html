@@ -19,26 +19,6 @@
         <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
     </div>
     <!-- Ventana de loader -->
-    {%if message %}
-    {% if message.RESULTADO == "OK" %}
-    <!-- Message alert -->
-    <div class="alert-message">
-        <i class='bx bx-check-circle'></i>
-        <h2>La {{message.SM_CODIGO_RUTA}} se ha <span>{{message.MENSAJE}}</span></h2>
-        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
-    </div>
-    <!-- Message alert -->
-    {% else %}
-    <!-- Message alert -->
-    <div class="alert-message">
-        <i class='bx bx-error-circle'></i>
-        <h2>Ocurrio un error al cargar la ruta</h2>
-        <p>{{message.MENSAJE}}</p>
-        <button class="closebtn btn-aceptar-alert" onclick="this.parentElement.style.display='none';">Aceptar</button>
-    </div>
-    <!-- Message alert -->
-    {% endif %}
-    {% endif %}
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
@@ -172,9 +152,8 @@
                                     <td> {{ruta.RUC_OTT}} </td>
                                     <td> {{ruta.GISROU_NOMBRE}}</td>
                                     <td>
-                                        <a href="/rutas?codruta={{ruta.CODIGO_RUTA}}"
-                                            class="btn-preciso-editar btn-preciso-2"> Editar
-                                        </a>
+                                        <button type="button" class="btn-preciso-editar" data-cod-ruta="{{ruta.CODIGO_RUTA}}"> Editar
+                                        </button>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -185,50 +164,10 @@
             </section>
         </main>
         <!-- MAIN -->
-        {% if dataruta %}
-        <!-- MODAL PUNTOS -->
-        <!-- Modal -->
-        <div class="md-modal md-show md-effect-1" id="modal-1">
-            <div class="md-content">
-                <h3>{{dataruta.CODIGO_RUTA}}</h3>
-                <div class="content-ruta">
-                    <form action="/enviar_ruta_smq" class="form-editar-rutas" method="POST">
-                        <div>
-                            <label for="">CODIGO_RUTA</label>
-                            <input type="text" value="{{dataruta.CODIGO_RUTA}}" disabled>
-                        </div>
-                        <div>
-                            <label for="">GISROU_NOMBRE</label>
-                            <input type="text" name="nombre-ruta" class="input-nombre"
-                                value="{{dataruta.GISROU_NOMBRE}}">
-                        </div>
-                        <div>
-                            <label for="">GISROU_PUNTOS</label>
-                            <textarea name="textarea-coordenadas" id="" cols="50"
-                                rows="10">{{dataruta.GISROU_PUNTOS}}</textarea>
-                        </div>
-                        <div>
-                            <label for="">RUC_OTT</label>
-                            <input type="text" value="{{dataruta.RUC_OTT}}" disabled>
-                        </div>
-                        <div>
-                            <label for="">RUC_PROVEEDOR</label>
-                            <input type="text" value="{{dataruta.RUC_PROVEEDOR}}" disabled>
-                        </div>
-
-                </div>
-                <div class="btn-modal">
-                    <a href="/rutas" name="modal-btn-cancelar">Cancelar</a>
-                    <input class="input-submit" type="submit" value="Actualizar">
-                </div>
-                </form>
-            </div>
-        </div>
-        <div class="overlay"></div>
-        <!-- MODAL PUNTOS -->
-        {% endif %}
         <!-- CONTENT -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" defer></script>
         <script src="{{url_for('static', filename='js/script.js')}}"></script>
+        <script src="{{url_for('static', filename='js/modal_mostrar_rutas.js')}}"></script>
         <script src="{{url_for('static', filename='js/despachos.js')}}"></script>
 </body>
 

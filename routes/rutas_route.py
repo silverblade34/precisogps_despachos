@@ -44,7 +44,6 @@ def enviar_ruta_smq():
     if 'user' in session:
         _rutasCL = RutasController()
         if 'rutaeditar' in session:
-            print("-----------------------------------1")
             datosclient = session['dataclientes']
             dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
             resp = _rutasCL.editarRutaSMQ(session['rutaeditar'], request.form['nombre-ruta'], request.form['textarea-coordenadas'])
@@ -61,3 +60,19 @@ def enviar_ruta_smq():
     else:
         return redirect(url_for('login'))
     
+
+@app.route('/buscar_ruta_smq', methods = ['GET'])
+def buscar_ruta_smq():
+    _rutasCL = RutasController()
+    codruta = request.args['codruta']
+    dataruta = _rutasCL.mostrarRutaSMQ(codruta)
+    return dataruta
+
+@app.route('/actualizar_ruta_smq', methods = ['POST'])
+def actualizar_ruta_smq():
+    _rutasCL = RutasController()
+    resp = _rutasCL.editarRutaSMQ(request.json['dataanterior'], request.json['data'])
+    result = resp[1:-1]
+    message = ast.literal_eval(result)
+    print(dict(message))
+    return message

@@ -1,3 +1,6 @@
+body{
+    font-family: 'Poppins', sans-serif;
+}
 .container-table{
     display: flex;
     justify-content: center;
@@ -511,4 +514,33 @@ body .overlay {
 
 .alert-message h2 span{
 	text-transform: lowercase;
+}
+
+/* MODAL MOSTRAR INFORMACION DE LAS RUTAS */
+.editar-ruta-title{
+    font-family: 'Poppins', sans-serif;
+}
+.form-mostrar-modal-ruta{
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-mostrar-modal-ruta .form-label{
+    width: 100%;
+    font-size: 13px;
+    text-align: start;
+}
+
+.form-mostrar-modal-ruta .input-text{
+    width: 100%;
+}
+
+.form-mostrar-modal-ruta textarea{
+    resize: none;
+    width: 100%;
+}
+
+.form-mostrar-modal-ruta .input-text{
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(122, 122, 122);
 }

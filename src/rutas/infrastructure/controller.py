@@ -52,9 +52,9 @@ class RutasController:
         data = resp.responseFiltrosRutas(ruta, empresa, dataresumen)
         return data
     
-    def editarRutaSMQ(self, rutaeditar, nombreruta, coordenadas):
+    def editarRutaSMQ(self, dataanterior, data):
         resp = RutasResponse()
-        data = resp.responseEditarRutasSMQ(rutaeditar, nombreruta, coordenadas)
+        data = resp.responseEditarRutasSMQ(dataanterior, data)
         return data
 
 
