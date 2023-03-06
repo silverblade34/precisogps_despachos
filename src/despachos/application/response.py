@@ -127,7 +127,8 @@ class ResponseDespachos:
         headers={
             "Content-Type":"application/json"
             }
-        response = requests.post(f'http://smmonitoreo.quito.gob.ec:444/api/despachar/?token=A1B8B0F9-490A-4E3B-BEC3-56FC54901AFA', despachosEnviar , headers=headers )
+        enviar = json.dumps(despachosEnviar)
+        response = requests.post(f'http://smmonitoreo.quito.gob.ec:444/api/despachar/?token=A1B8B0F9-490A-4E3B-BEC3-56FC54901AFA', enviar , headers=headers )
         raw = response.json()
         return raw
 

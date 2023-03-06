@@ -59,7 +59,7 @@ def validar_placas():
             print(validarPlacas)
             if validarPlacas['status'] == True:
                 print(resp)
-                redirect(url_for('enviar_despachos'))
+                return redirect(url_for('enviar_despachos'))
             else:
                 return render_template('cargar_despachos.html', dataruta = session['dataruta'], dataempresa = session['dataempresa'], messageplacas = validarPlacas['placas'])
         else:
