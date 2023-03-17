@@ -18,7 +18,7 @@ def mostrar_puntos():
                 dataruta = session['dataruta']
             else:
                 dataempresa = _rutasCL.setDataEmpresa(session['dataclientes'], request.args['ruc']) 
-                dataruta = _rutasCL.rutasCliente(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'])
+                dataruta = _rutasCL.rutasCliente(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'], ubic= "home")
                 session['dataempresa'] = dataempresa
                 session['dataruta'] = dataruta  
             session.pop('datapuntos', None)

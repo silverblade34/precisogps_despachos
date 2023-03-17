@@ -26,7 +26,7 @@ def cargar_despachos():
 
             session.pop('datapuntos', None)
             if request.args['codruta'] == "null":
-                return render_template('cargar_despachos.html', dataruta = session['dataruta'], dataempresa = session['dataempresa'])
+                return render_template('cargar_despachos.html', dataruta = session['dataruta'], dataempresa = session['dataempresa'], ubic= "home")
             else:
                 return render_template('cargar_despachos.html', dataruta = session['dataruta'], dataempresa = session['dataempresa'], codruta = request.args['codruta'])
         except Exception as err:

@@ -1,0 +1,32 @@
+.container-table-vehiculos{
+    width: 100%;
+    padding: 20px;
+}
+
+#tabla-vehiculos{
+    border-collapse: collapse;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+#tabla-vehiculos table{
+    border-radius: 20px;
+    font-size: 11px !important;
+}
+
+table.dataTable thead th{
+    background-color: #c46868 !important;
+    color: #ffffff;
+}
+
+table.dataTable{
+    border-radius: 20px !important;
+}
+
+div.dt-buttons .dt-button{
+    border-radius: 10px !important;
+    border: none !important;
+    font-weight: 600;
+    background-color: rgb(230, 230, 230);
+    color: #2c304d;
+}

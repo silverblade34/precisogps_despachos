@@ -24,12 +24,12 @@ def menu():
             session.pop('dataempresa', None)
             session.pop('datapuntos', None)
             datosclient = session['dataclientes']
-            return render_template('index.html', datosclient = datosclient)
+            return render_template('index.html', datosclient = datosclient, ubic= "home")
         else:
             _clientCL = ClientController()
             datosclient = _clientCL.listarClientes()
             session['dataclientes'] = datosclient
-            return render_template('index.html', datosclient = datosclient)
+            return render_template('index.html', datosclient = datosclient,  ubic= "home")
     else:
         return redirect(url_for('login'))
 
@@ -41,10 +41,10 @@ def rutas():
         if request.method == 'POST':
             dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
             datafiltro = _rutasCL.filtroRutasSMQ(request.form['codruta'], request.form['select-ruc'], dataresumen)
-            return render_template('rutas.html', dataresumen = datafiltro, datosclient = datosclient)
+            return render_template('rutas.html', dataresumen = datafiltro, datosclient = datosclient, ubic= "rutas")
         else:
             dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-            return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient)
+            return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient, ubic= "rutas")
     else:
         return redirect(url_for('login'))
     
@@ -56,10 +56,10 @@ def paradas():
         if request.method == 'POST':
             dataresumen = _rutasCL.resumenPuntosSMQ(datosclient) 
             datafiltro = _rutasCL.filtroPuntosSMQ(request.form['parada'], request.form['ruta'], request.form['select-ruc'], dataresumen)  
-            return render_template('paradas.html', dataresumen = datafiltro, datosclient = datosclient)
+            return render_template('paradas.html', dataresumen = datafiltro, datosclient = datosclient, ubic= "paradas")
         else:
             dataresumen = _rutasCL.resumenPuntosSMQ(datosclient)
-            return render_template('paradas.html', dataresumen = dataresumen, datosclient = datosclient)
+            return render_template('paradas.html', dataresumen = dataresumen, datosclient = datosclient, ubic= "paradas")
     else:
         return redirect(url_for('login'))
 
@@ -70,9 +70,9 @@ def despachos():
         _despachosCL = DespachosController()
         if request.method == 'POST':
             datadespachos = _despachosCL.mostrarDespachosSMQ(request.form['date-filtro'], request.form['select-ruc'])
-            return render_template('despachos.html', datosclient = datosclient, datadespachos = datadespachos)
+            return render_template('despachos.html', datosclient = datosclient, datadespachos = datadespachos, ubic= "despachos")
         else:
-            return render_template('despachos.html', datosclient = datosclient)
+            return render_template('despachos.html', datosclient = datosclient, ubic= "despachos")
     else:
         return redirect(url_for('login'))    
 

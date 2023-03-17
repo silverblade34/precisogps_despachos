@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Vehiculos cargados en SMQ</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Vehiculos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Actualiza tu archivo HTML para agregar el ID "tabla-vehiculos" a la tabla -->
+    <div class="container-table-vehiculos">
+        <table id="tabla-vehiculos" class="tabla-vehiculos">
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>Ruat</th>
+                    <th>Imei</th>
+                    <th>Fecha de Ultimo Dato</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehiculos in datavehiculos %}
+                <tr>
+                    <td>{{vehiculos.PLACA}}</td>
+                    <td>{{vehiculos.RUAT}}</td>
+                    <td>{{vehiculos.IMEI}}</td>
+                    <td>{{vehiculos.FECHA_ULTIMO_DATO}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+<!-- Agrega las librerías de jQuery y DataTables -->
+<script src="{{url_for('static', filename='js/vehiculos.js')}}" defer></script>
+<!-- MAIN -->
+{% endblock %}

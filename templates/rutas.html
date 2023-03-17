@@ -1,127 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{url_for('static', filename='img/logo-preciso.png')}}" />
-    <!-- Boxicons -->
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <!-- My CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/mostrar_rutas.css')}}">
-    <title>Preciso GPS</title>
-</head>
-
-<body>
-    <!-- Ventana de loader -->
-    <div class="hidden-loader" id="hidden-loader">
-        <img src="{{url_for('static', filename='img/gif-loader2.gif')}}" alt="">
+{% extends 'layout.html' %}
+{% block body %}
+<!-- MAIN -->
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Rutas cargadas en SMQ</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li><i class='bx bx-chevron-right'></i></li>
+                <li>
+                    <a class="active" href="#">Rutas</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <!-- Ventana de loader -->
-    <!-- SIDEBAR -->
-    <section id="sidebar">
-        <a href="#" class="brand">
-            <img src="{{url_for('static', filename='img/logo-preciso.png')}}" alt="">
-            <span class="text">PrecisoGPS</span>
-        </a>
-        <ul class="side-menu top">
-            <li class="btn-ingresar-preciso">
-                <a href="{{ url_for('menu')}}" class="btn-preciso-2">
-                    <i class='bx bxs-dashboard'></i>
-                    <span class="text">Principal</span>
-                </a>
-            </li>
-            <li class="active">
-                <a href="{{ url_for('rutas')}}" class="btn-preciso-2">
-                    <i class='bx bxs-carousel'></i>
-                    <span class="text">Rutas</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url_for('paradas')}}" class="btn-preciso-2">
-                    <i class='bx bxs-doughnut-chart'></i>
-                    <span class="text">Paradas</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url_for('despachos')}}">
-                    <i class='bx bxs-file-json' class="btn-preciso-2"></i>
-                    <span class="text">Despachos</span>
-                </a>
-            </li>
-        </ul>
-        <ul class="side-menu">
-            <li>
-                <a href="#">
-                    <i class='bx bxs-cog'></i>
-                    <span class="text">Settings</span>
-                </a>
-            </li>
-            <li>
-                <a href="/logout" class="logout">
-                    <i class='bx bxs-log-out-circle'></i>
-                    <span class="text">Cerrar Sesión</span>
-                </a>
-            </li>
-        </ul>
-    </section>
-    <!-- SIDEBAR -->
-    <!-- CONTENT -->
-    <section id="content">
-        <!-- NAVBAR -->
-        <nav>
-            <i class='bx bx-menu'></i>
-            <a href="#" class="nav-link">Categories</a>
-            <form action="#">
-
-            </form>
-            <a href="#" class="notification">
-                <i class='bx bxs-bell'></i>
-                <span class="num">0</span>
-            </a>
-            <a href="#" class="profile">
-                <img src="{{url_for('static', filename='img/user-img-web.png')}}">
-            </a>
-        </nav>
-        <!-- MAIN -->
-        <main>
-            <div class="head-title">
-                <div class="left">
-                    <h1>Rutas cargadas en SMQ</h1>
-                    <ul class="breadcrumb">
-                        <li>
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li><i class='bx bx-chevron-right'></i></li>
-                        <li>
-                            <a class="active" href="#">Rutas</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <section class="container-table">
-                <div class="table">
-                    <section class="table__header">
-                        <h1>Filtros</h1>
-                        <form action="{{url_for('rutas')}}" method="POST">
-                            <div>
-                                <label for="select">Seleccione una empresa: </label>
-                                <select class="select" name="select-ruc" id="select">
-                                    <option value="">Todos</option>
-                                    {% for cliente in datosclient %}
-                                    <option value="{{cliente.ruc}}">{{cliente.empresa}}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <label for="">Buscar Ruta: </label>
-                            <div class="input-group">
-                                <input class="input-seek" name="codruta" type="search" placeholder="Ruta...">
-                                <i class='bx bx-search-alt-2'></i>
-                            </div>
-                            <input type="submit" class="btn-preciso-editar btn-preciso-2" value="Buscar" />
-                        </form>
-                        <!-- <div class="export__file">
+    <section class="container-table">
+        <div class="table">
+            <section class="table__header">
+                <h1>Filtros</h1>
+                <form action="{{url_for('rutas')}}" method="POST">
+                    <div>
+                        <label for="select">Seleccione una empresa: </label>
+                        <select class="select" name="select-ruc" id="select">
+                            <option value="">Todos</option>
+                            {% for cliente in datosclient %}
+                            <option value="{{cliente.ruc}}">{{cliente.empresa}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <label for="">Buscar Ruta: </label>
+                    <div class="input-group">
+                        <input class="input-seek" name="codruta" type="search" placeholder="Ruta...">
+                        <i class='bx bx-search-alt-2'></i>
+                    </div>
+                    <input type="submit" class="btn-preciso-editar btn-preciso-2" value="Buscar" />
+                </form>
+                <!-- <div class="export__file">
                             <label for="export-file" class="export__file-btn" title="Export File"></label>
                             <input type="checkbox" id="export-file">
                             <div class="export__file-options">
@@ -132,43 +48,37 @@
                                 <label for="export-file" id="toEXCEL">EXCEL <img src="{{url_for('static', filename='img/excel.png')}}" alt=""></label>
                             </div>
                         </div> -->
-                    </section>
-                    <section class="table__body">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th> Ruta <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th> Empresa <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th> RUC <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th> Nombre Ruta <span class="icon-arrow">&UpArrow;</span></th>
-                                    <th> Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for ruta in dataresumen %}
-                                <tr>
-                                    <td> {{ruta.CODIGO_RUTA}}</td>
-                                    <td> {{ruta.NOMBRE_EMPRESA}}</td>
-                                    <td> {{ruta.RUC_OTT}} </td>
-                                    <td> {{ruta.GISROU_NOMBRE}}</td>
-                                    <td>
-                                        <button type="button" class="btn-preciso-editar" data-cod-ruta="{{ruta.CODIGO_RUTA}}"> Editar
-                                        </button>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </section>
-                </div>
             </section>
-        </main>
-        <!-- MAIN -->
-        <!-- CONTENT -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" defer></script>
-        <script src="{{url_for('static', filename='js/script.js')}}"></script>
-        <script src="{{url_for('static', filename='js/modal_mostrar_rutas.js')}}"></script>
-        <script src="{{url_for('static', filename='js/despachos.js')}}"></script>
-</body>
-
-</html>
+            <section class="table__body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Ruta <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Empresa <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> RUC <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Nombre Ruta <span class="icon-arrow">&UpArrow;</span></th>
+                            <th> Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ruta in dataresumen %}
+                        <tr>
+                            <td> {{ruta.CODIGO_RUTA}}</td>
+                            <td> {{ruta.NOMBRE_EMPRESA}}</td>
+                            <td> {{ruta.RUC_OTT}} </td>
+                            <td> {{ruta.GISROU_NOMBRE}}</td>
+                            <td>
+                                <button type="button" class="btn-preciso-editar" data-cod-ruta="{{ruta.CODIGO_RUTA}}">
+                                    Editar
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </section>
+</main>
+<!-- MAIN -->
+{% endblock %}

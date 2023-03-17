@@ -12,7 +12,7 @@ def mostrar_rutas():
     if 'user' in session:
         _rutasCL = RutasController()
         if 'dataempresa' in session:
-            return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = session['dataruta']) 
+            return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = session['dataruta'], ubic= "home") 
         else:
             try:
                 dataempresa = _rutasCL.setDataEmpresa(session['dataclientes'], request.args['ruc']) 

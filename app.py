@@ -7,9 +7,10 @@ import routes.paginas_route
 import routes.credential_route
 import routes.rutas_route
 import routes.puntos_route
-import routes.despachos_route 
+import routes.despachos_route
+import routes.vehiculos_route
 from routes.paginas_route import pagina_no_encontrada
 
 if __name__=='__main__':
     app.register_error_handler(404, pagina_no_encontrada)
-    app.run(debug = True, port=5000) # Ejecutamos la aplicacion
+    app.run(debug = True, port=5020) # Ejecutamos la aplicacion
