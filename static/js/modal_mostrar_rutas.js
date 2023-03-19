@@ -3,10 +3,12 @@ const btnseditarRutas = document.querySelectorAll(".btn-preciso-editar");
 btnseditarRutas.forEach(btnseditarRuta => {
     btnseditarRuta.addEventListener("click", function () {
         const codRuta = this.dataset.codRuta;
+        mostrarModalCarga();
         fetch(`/buscar_ruta_smq?codruta=${codRuta}`, {
             method: "GET",
         })
             .then(response => {
+                cerrarModalCarga();
                 if (!response.ok) {
                     throw new Error("Error al buscar ruta");
                 }
@@ -78,3 +80,17 @@ btnseditarRutas.forEach(btnseditarRuta => {
             })
     });
 })
+
+function mostrarModalCarga() {
+    Swal.fire({
+        title: '<h3 class="modal-title">Cargando datos...</h3>',
+        html: '<div class="lds-dual-ring"></div>',
+        allowOutsideClick: false,
+        showCancelButton: false,
+        showConfirmButton: false
+    });
+}
+
+function cerrarModalCarga() {
+    Swal.close();
+}

@@ -4,6 +4,7 @@ from src.clientes.infrastructure.controller import ClientController
 from src.rutas.infrastructure.controller import RutasController
 from src.puntos.infrastructure.controller import PuntosController
 from src.despachos.infrastructure.controller import DespachosController
+import requests
 
 from __main__ import app
 app.secret_key = "hhyy526//--"
@@ -36,15 +37,19 @@ def menu():
 @app.route('/rutas', methods = ['POST', 'GET'])
 def rutas():
     if 'user' in session:
-        datosclient = session['dataclientes']
-        _rutasCL = RutasController()
-        if request.method == 'POST':
-            dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-            datafiltro = _rutasCL.filtroRutasSMQ(request.form['codruta'], request.form['select-ruc'], dataresumen)
-            return render_template('rutas.html', dataresumen = datafiltro, datosclient = datosclient, ubic= "rutas")
-        else:
-            dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-            return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient, ubic= "rutas")
+        try: 
+            datosclient = session['dataclientes']
+            _rutasCL = RutasController()
+            if request.method == 'POST':
+                dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
+                datafiltro = _rutasCL.filtroRutasSMQ(request.form['codruta'], request.form['select-ruc'], dataresumen)
+                return render_template('rutas.html', dataresumen = datafiltro, datosclient = datosclient, ubic= "rutas")
+            else:
+                dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
+                return render_template('rutas.html', dataresumen = dataresumen, datosclient = datosclient, ubic= "rutas")
+        except requests.exceptions.RequestException as e:
+            mensaje_error = "Hubo un error al conectarse con la API. Por favor, inténtelo de nuevo más tarde."
+            return render_template('notificaciones.html', msgerror = mensaje_error)
     else:
         return redirect(url_for('login'))
     

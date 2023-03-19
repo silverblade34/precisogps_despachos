@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Michell\OneDrive\Documentos\Proyectos\Flask-Web\sistema-precisogps\env"
+VIRTUAL_ENV="C:\Users\mpach\Documents\UNIVERSIDAD-MICHELL\Flask\Web\sistema-precisogps\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

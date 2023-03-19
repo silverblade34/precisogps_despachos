@@ -29,7 +29,6 @@ def mostrar_puntos():
                 print("Ruc : " + str(dataempresa['ruc']))
                 print("Ruta : " + str(request.args['ruta']))
                 datapuntos = _puntosCL.listarPuntos(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'], request.args['ruta'])
-                print(datapuntos)
                 datamostrar = str(datapuntos)
                 data = datamostrar.replace("'",'"')
                 session['datapuntos'] = datapuntos

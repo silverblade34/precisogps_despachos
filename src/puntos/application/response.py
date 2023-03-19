@@ -55,7 +55,6 @@ class PuntosResponse:
             rutadata = parada['CODIGO_RUTA'].replace(" ","").lower()
             # distance2 = Levenshtein.distance(rutadata, rutaname)
             if distance1 < 3 or parada['RUC_OTT'] == empresa or rutaname == rutadata:
-                print("---------------------------1")
                 datafiltro.append(parada)
                 cont += 1
         if cont == 0:

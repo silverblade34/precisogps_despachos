@@ -9,9 +9,15 @@
     white-space: nowrap;
 }
 
-#tabla-vehiculos table{
+#tabla-vehiculos table.dataTable{
     border-radius: 20px;
     font-size: 11px !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    border: none !important;
+    background-color: transparent !important;
+    color: rgb(141, 30, 15);
 }
 
 table.dataTable thead th{
@@ -23,10 +29,40 @@ table.dataTable{
     border-radius: 20px !important;
 }
 
+table.dataTable thead th, table.dataTable tbody td {
+    border: 1px solid #ddd;
+}
+
 div.dt-buttons .dt-button{
-    border-radius: 10px !important;
     border: none !important;
-    font-weight: 600;
-    background-color: rgb(230, 230, 230);
-    color: #2c304d;
+    font-weight: 550;
+    background-color: #e4e8f0;
+    font-size: 13px;
+    color: #1d1f2c;
+    padding: 10px 15px;
+    margin: 0;
+    transition: all 0.5s;
+}
+
+div.dt-buttons .dt-button:hover{
+    background-color: #c46868;
+    color: #ffffff;
+}
+
+div.dt-buttons .dt-button:first-child{
+    /* Estilos a aplicar */
+    border-radius: 15px 0 0 15px;
+    padding-left: 20px;
+}
+
+div.dt-buttons .dt-button:last-child{
+    border-radius: 0 15px 15px 0;
+    padding-right: 20px;
+}
+
+div.dt-buttons{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap: 0;
+    margin-bottom: 10px;
 }
