@@ -15,11 +15,12 @@ def mostrar_rutas():
             return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = session['dataruta'], ubic= "home") 
         else:
             try:
-                dataempresa = _rutasCL.setDataEmpresa(session['dataclientes'], request.args['ruc']) 
+                dataempresa = _rutasCL.setDataEmpresa(session['dataclientes'], request.args['ruc'])
+                print("---------------------0")
                 dataruta = _rutasCL.rutasCliente(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'])
                 session['dataempresa'] = dataempresa
                 session['dataruta'] = dataruta
-                return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = dataruta)
+                return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = dataruta, ubic= "home")
             except Exception as err:
                 return render_template('index.html', datosclient = session['dataclientes'], message = err)
     else:

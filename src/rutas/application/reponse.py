@@ -79,6 +79,7 @@ class RutasResponse:
         rutaeliminar['SM_RUC_PROVEEDOR'] = dataanterior['RUC_PROVEEDOR']
         eliminar = self.responseEnviarRuta(rutaeliminar)
         rutanueva = rutaeliminar
+        rutanueva['SM_CODIGO_RUTA'] = data['SM_CODIGO_RUTA']
         rutanueva['SM_ESTADO'] = "A"
         rutanueva['SM_COORDENADAS'] = data['SM_COORDENADAS']
         rutanueva['SM_NOMBRE'] = data['SM_NOMBRE']

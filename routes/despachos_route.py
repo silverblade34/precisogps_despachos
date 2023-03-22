@@ -28,7 +28,7 @@ def cargar_despachos():
             if request.args['codruta'] == "null":
                 return render_template('cargar_despachos.html', dataruta = session['dataruta'], dataempresa = session['dataempresa'], ubic= "home")
             else:
-                return render_template('cargar_despachos.html', dataruta = session['dataruta'], dataempresa = session['dataempresa'], codruta = request.args['codruta'])
+                return render_template('cargar_despachos.html', dataruta = session['dataruta'], dataempresa = session['dataempresa'], codruta = request.args['codruta'], ubic= "home")
         except Exception as err:
                 return render_template('index.html', datosclient = session['dataclientes'], message = err)
     else:

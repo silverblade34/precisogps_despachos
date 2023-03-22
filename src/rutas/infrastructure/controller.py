@@ -11,7 +11,9 @@ class RutasController:
     def rutasCliente(self, token, depot, ruc):
         conexion = ApiConnectionPreciso()
         response = RutasResponse()
+        print("----------------1")
         datarutas = conexion.consumirRutas(token, depot, ruc)
+        print("----------------2")
         resp = response.responseListarRuta(datarutas)  
         return resp
 

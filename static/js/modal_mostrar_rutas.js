@@ -23,7 +23,7 @@ btnseditarRutas.forEach(btnseditarRuta => {
                     html: `
                 <form class="form-mostrar-modal-ruta">
                     <p class="form-label">CODIGO_RUTA</p>
-                    <input type="text" id="cod_ruta" class = "form-control input-text" value="${data.CODIGO_RUTA}" disabled>
+                    <input type="text" id="cod_ruta" class = "form-control input-text" value="${data.CODIGO_RUTA}">
                     <p class="form-label">GISROU_NOMBRE</p>
                     <input type="text" id="name_ruta" class = "form-control input-text" value="${data.GISROU_NOMBRE}">
                     <p for="" class="form-label">GISROU_PUNTOS</p>
@@ -37,11 +37,13 @@ btnseditarRutas.forEach(btnseditarRuta => {
                     showCancelButton: true,
                     confirmButtonText: "Actualizar ruta",
                     preConfirm: function () {
+                        const cod_ruta = document.getElementById("cod_ruta").value;
                         const name_ruta = document.getElementById("name_ruta").value;
                         const ruta_coordenadas = document.getElementById("ruta_coordenadas").value;
                         return {
                             dataanterior: dataanterior,
                             data: {
+                                SM_CODIGO_RUTA: cod_ruta,
                                 SM_NOMBRE: name_ruta,
                                 SM_COORDENADAS: ruta_coordenadas
                             }

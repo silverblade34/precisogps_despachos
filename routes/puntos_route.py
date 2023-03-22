@@ -18,7 +18,7 @@ def mostrar_puntos():
                 dataruta = session['dataruta']
             else:
                 dataempresa = _rutasCL.setDataEmpresa(session['dataclientes'], request.args['ruc']) 
-                dataruta = _rutasCL.rutasCliente(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'], ubic= "home")
+                dataruta = _rutasCL.rutasCliente(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'])
                 session['dataempresa'] = dataempresa
                 session['dataruta'] = dataruta  
             session.pop('datapuntos', None)
@@ -32,9 +32,9 @@ def mostrar_puntos():
                 datamostrar = str(datapuntos)
                 data = datamostrar.replace("'",'"')
                 session['datapuntos'] = datapuntos
-                return render_template('mostrar_puntos.html', dataruta = dataruta, dataempresa = dataempresa, ruta= request.args['ruta'], datapuntos = datapuntos, data = data)
+                return render_template('mostrar_puntos.html', dataruta = dataruta, dataempresa = dataempresa, ruta= request.args['ruta'], datapuntos = datapuntos, data = data, ubic= "home")
             else:
-                return render_template('mostrar_puntos.html', dataruta = dataruta, dataempresa = dataempresa)
+                return render_template('mostrar_puntos.html', dataruta = dataruta, dataempresa = dataempresa, ubic= "home")
         except Exception as err:
             return render_template('index.html', datosclient = session['dataclientes'], message = err)
     else:
