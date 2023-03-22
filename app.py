@@ -13,4 +13,4 @@ from routes.paginas_route import pagina_no_encontrada
 
 if __name__=='__main__':
     app.register_error_handler(404, pagina_no_encontrada)
-    app.run(debug = True, port=5020) # Ejecutamos la aplicacion
+    app.run(debug = True, port=5000) # Ejecutamos la aplicacion
