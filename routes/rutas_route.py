@@ -16,7 +16,6 @@ def mostrar_rutas():
         else:
             try:
                 dataempresa = _rutasCL.setDataEmpresa(session['dataclientes'], request.args['ruc'])
-                print("---------------------0")
                 dataruta = _rutasCL.rutasCliente(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'])
                 session['dataempresa'] = dataempresa
                 session['dataruta'] = dataruta
@@ -40,27 +39,31 @@ def modal_ruta():
     else:
         return redirect(url_for('login'))
 
-@app.route('/enviar_ruta_smq', methods = ['GET', 'POST'])
+@app.route('/enviar_ruta_smq', methods=['POST'])
 def enviar_ruta_smq():
-    if 'user' in session:
+    try:
+        data = request.json  # Aquí obtienes los datos enviados desde el frontend como un diccionario Python
         _rutasCL = RutasController()
-        if 'rutaeditar' in session:
-            datosclient = session['dataclientes']
-            dataresumen = _rutasCL.resumenRutasSMQ(datosclient)
-            resp = _rutasCL.editarRutaSMQ(session['rutaeditar'], request.form['nombre-ruta'], request.form['textarea-coordenadas'])
-            result = resp[1:-1]
-            message = ast.literal_eval(result)
-            session.pop('rutaeditar', None)
-            return render_template('rutas.html',  dataresumen = dataresumen, datosclient = datosclient, message = message)
-        else:
-            resp = _rutasCL.enviarRutaSMQ(session['rutaestr'])
-            result = resp[1:-1]
-            message = ast.literal_eval(result)
-            print(message)
-            return render_template('mostrar_rutas.html', dataempresa = session['dataempresa'], rutas = session['dataruta'], message = message)       
-    else:
-        return redirect(url_for('login'))
-    
+        resp = _rutasCL.enviarRutaSMQ(data)
+        result = resp[1:-1]
+        message = ast.literal_eval(result)
+        print(message)
+        return {"message": message}  # Por ejemplo, devolviendo un diccionario con un mensaje de éxito
+    except Exception as e:
+        return {"error": str(e)}, 400 
+
+
+@app.route('/data_ruta_nimbus', methods = ['GET'])
+def data_ruta_nimbus():
+    _rutasCL = RutasController()
+    dataempresa = session['dataempresa']
+    rutaestr = _rutasCL.rutaEstructura(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'], request.args['rutacodigo'])
+    session['rutaestr'] = rutaestr
+    rutamostrar = str(rutaestr)
+    data = rutamostrar.replace("'",'"')
+    resp = {"data": data, "codruta": request.args['rutacodigo']}
+    return resp
+
 
 @app.route('/buscar_ruta_smq', methods = ['GET'])
 def buscar_ruta_smq():

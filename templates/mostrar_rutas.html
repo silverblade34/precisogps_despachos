@@ -57,13 +57,12 @@
                     <h3>{{ruta.SM_CODIGO_RUTA}}</h3>
                     <p class="nombre-ruta">{{ruta.SM_NOMBRE}}</p>
                     <div>
-                        <a href="/modal_ruta?rutacodigo={{ruta.SM_CODIGO_RUTA}}" class="btn-cargar-ruta btn-preciso-4">Cargar ruta</a>
+                        <button data-cod-ruta="{{ruta.SM_CODIGO_RUTA}}" class="btn-cargar-ruta">Cargar ruta</button>
                     </div>
                 </span>
             </li>
         {% endfor %}
     </ul>
-    {% block modal %}{% endblock %}
 </main>
 <!-- MAIN -->
 {% endblock %}
