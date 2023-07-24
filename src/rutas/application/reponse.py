@@ -28,6 +28,8 @@ class RutasResponse:
         return rutasmostrar
 
     def responseEstrRuta(self, datarutas, rutacodigo):
+        print("-----RUTA CODIGO----------")
+        print(rutacodigo)
         for ruta in datarutas:
             if ruta['SM_CODIGO_RUTA'] == rutacodigo:
                 return ruta
