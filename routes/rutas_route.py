@@ -53,15 +53,15 @@ def enviar_ruta_smq():
         return {"error": str(e)}, 400 
 
 
-@app.route('/data_ruta_nimbus', methods = ['GET'])
+@app.route('/data_ruta_nimbus', methods = ['POST'])
 def data_ruta_nimbus():
     _rutasCL = RutasController()
     dataempresa = session['dataempresa']
-    rutaestr = _rutasCL.rutaEstructura(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'], request.args['rutacodigo'])
+    rutaestr = _rutasCL.rutaEstructura(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'], request.json['rutacodigo'])
     session['rutaestr'] = rutaestr
     rutamostrar = str(rutaestr)
     data = rutamostrar.replace("'",'"')
-    resp = {"data": data, "codruta": request.args['rutacodigo']}
+    resp = {"data": data, "codruta": request.json['rutacodigo']}
     return resp
 
 

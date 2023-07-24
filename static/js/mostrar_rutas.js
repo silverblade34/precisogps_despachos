@@ -24,8 +24,18 @@ btnCargarRuta.forEach(btnCargarRut => {
         });
 
         const codigoRuta = this.dataset.codRuta;
-        fetch(`/data_ruta_nimbus?rutacodigo=${codigoRuta}`, {
-            method: "GET",
+        console.log("----CODIGO RUTA----")
+        console.log(codigoRuta)
+        fetch(`/data_ruta_nimbus`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(
+                {
+                    "rutacodigo": codigoRuta
+                }
+            )
         })
         .then(response => {
             if (!response.ok) {
