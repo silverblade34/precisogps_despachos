@@ -18,7 +18,7 @@
     </div>
     <section class="container-table">
         <div class="table">
-            <section class="table__header">
+            <section class="table__header text-sm">
                 <h1>Filtros</h1>
                 <form action="{{url_for('paradas')}}" class="form-filtro-paradas" method="POST">
                     <div>
@@ -32,11 +32,11 @@
                     </div>
                     <div class="input-text">
                         <label for="">Parada: </label>
-                        <input class="input-seek" name="parada" type="search" placeholder="Buscar Parada...">
+                        <input class="input-seek border focus:outline-none focus:border-blue-500" name="parada" type="search" placeholder="Buscar Parada...">
                     </div>
                     <div class="input-text">
                         <label for="">Ruta: </label>
-                        <input class="input-seek" name="ruta" type="search" placeholder="Buscar Ruta...">
+                        <input class="input-seek border focus:outline-none focus:border-blue-500" name="ruta" type="search" placeholder="Buscar Ruta...">
                     </div>
                     <input type="submit" class="btn-rutas-smq btn-preciso-2" value="Buscar" />
                 </form>
@@ -53,7 +53,7 @@
                         </div> -->
             </section>
             <section class="table__body">
-                <table>
+                <table class="text-sm">
                     <thead>
                         <tr>
                             <th> Parada <span class="icon-arrow">&UpArrow;</span></th>

@@ -432,8 +432,8 @@ body .overlay {
 /* btn editar rutas, paradas, despachos */
 
 .btn-preciso-editar{
-	background-color: #3C91E6;
-	color: #fff;
+	background-color: #3C91E6 !important;
+	color: #fff !important;
 	padding: 8px 15px;
     font-size: 14px;
 	border-radius: 18px;
@@ -441,6 +441,11 @@ body .overlay {
 	border: none;
 	cursor: pointer;
 }
+
+.btn-preciso-editar:hover{
+    background-color: #2266aa !important;
+}
+
 
 .content-ruta{
     display: flex;

@@ -4,8 +4,8 @@
 }
 
 .btn-preciso-despacho{
-	background-color: #3C91E6;
-	color: #fff;
+	background-color: #3C91E6 !important;
+	color: #fff !important;
 	padding: 8px 15px;
 	border-radius: 10px;
 	font-family: 'Poppins', sans-serif;

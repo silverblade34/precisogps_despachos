@@ -18,16 +18,15 @@ btnseditarRutas.forEach(btnseditarRuta => {
                 console.log(data)
                 const dataanterior = data
                 Swal.fire({
-                    title: "Editar ruta",
-                    titleClass: 'editar-ruta-title',
                     html: `
-                <form class="form-mostrar-modal-ruta">
+                    <p class="font-bold text-lg text-center">Editar ruta</p>
+                <form class="form-mostrar-modal-ruta text-sm">
                     <p class="form-label">CODIGO_RUTA</p>
                     <input type="text" id="cod_ruta" class = "form-control input-text" value="${data.CODIGO_RUTA}">
                     <p class="form-label">GISROU_NOMBRE</p>
                     <input type="text" id="name_ruta" class = "form-control input-text" value="${data.GISROU_NOMBRE}">
                     <p for="" class="form-label">GISROU_PUNTOS</p>
-                    <textarea name="textarea-coordenadas" id="ruta_coordenadas" cols="50" rows="10">${data.GISROU_PUNTOS}</textarea>
+                    <textarea name="textarea-coordenadas" id="ruta_coordenadas" cols="50" rows="10" class="p-3">${data.GISROU_PUNTOS}</textarea>
                     <p class="form-label">RUC OTT</p>
                     <input type="text" id="ruc_ruta_ott" class = "form-control input-text" value="${data.RUC_OTT}" disabled>
                     <p class="form-label">RUC PROVEEDOR</p>

@@ -10,7 +10,6 @@ class RutasResponse:
             "Content-Type":"application/json"
             }
         rutaenviar = []
-        rutaestr = json.loads(rutaestr)
         rutaenviar.append(rutaestr)
         rutae = json.dumps(rutaenviar)
         response = requests.post(f'http://smmonitoreo.quito.gob.ec:444/api/cargaruta/?token=A1B8B0F9-490A-4E3B-BEC3-56FC54901AFA', rutae , headers=headers )

@@ -18,7 +18,7 @@
     </div>
     <section class="container-table">
         <div class="table">
-            <section class="table__header">
+            <section class="table__header text-sm">
                 <h1>Filtros</h1>
                 <form action="{{url_for('despachos')}}" method="POST">
                     <div>
@@ -31,7 +31,7 @@
                         </select>
                     </div>
                     <label for="">Fecha: </label>
-                    <input type="datetime-local" id="start" name="date-filtro" class="date-filtro" />
+                    <input type="datetime-local" id="start" name="date-filtro" class="date-filtro p-3 border focus:outline-none focus:border-blue-500" />
                     <input type="submit" class="btn-preciso-despacho btn-preciso-2" value="Buscar" />
                 </form>
                 <!-- <div class="export__file">
@@ -46,8 +46,8 @@
                             </div>
                         </div> -->
             </section>
-            <section class="table__body">
-                <table>
+            <section class="table__body text-sm">
+                <table class="text-sm">
                     <thead>
                         <tr>
                             <th> Empresa</th>

@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\mpach\Documents\PROYECTOS\WEB\sistema-precisogps\env
+set VIRTUAL_ENV=C:\Users\mpach\Documents\PROYECTOS\FLASK\Web\precisogps_despachos\env
 
 if not defined PROMPT set PROMPT=$P$G
 
