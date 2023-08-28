@@ -15,6 +15,17 @@ class RutasResponse:
         response = requests.post(f'http://smmonitoreo.quito.gob.ec:444/api/cargaruta/?token=A1B8B0F9-490A-4E3B-BEC3-56FC54901AFA', rutae , headers=headers )
         resp = response.json()
         return resp
+    
+    def responseEnviarCrearRuta(self, rutaestr):
+        headers={
+            "Content-Type":"application/json"
+            }
+        rutaenviar = []
+        dictionary = json.loads(rutaestr)
+        rutaenviar.append(dictionary)
+        response = requests.post(f'http://smmonitoreo.quito.gob.ec:444/api/cargaruta/?token=A1B8B0F9-490A-4E3B-BEC3-56FC54901AFA', json.dumps(rutaenviar) , headers=headers )
+        resp = response.json()
+        return resp
 
     def responseListarRuta(self, datarutas):
         rutasmostrar = []

@@ -24,8 +24,6 @@ btnCargarRuta.forEach(btnCargarRut => {
         });
 
         const codigoRuta = this.dataset.codRuta;
-        console.log("----CODIGO RUTA----")
-        console.log(codigoRuta)
         fetch(`/data_ruta_nimbus`, {
             method: "POST",
             headers: {
@@ -82,8 +80,8 @@ btnCargarRuta.forEach(btnCargarRut => {
                         // Mostrar un mensaje de éxito si todo salió bien
                         Swal.fire({
                             icon: 'success',
-                            title: 'Datos cargados correctamente',
-                            text: 'Los datos se han cargado correctamente a SMQ',
+                            html: `<p class="text-sm text-gray-500 text-center font-bold">Datos cargados correctamente</p>
+                            <p class="text-sm text-gray-500 text-center">Los datos se han cargado correctamente a SMQ</p>`
                         });
                     })
                     .catch(error => {

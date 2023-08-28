@@ -24,7 +24,7 @@ class RutasController:
 
     def enviarRutaSMQ(self, rutaestr):
         enviarsmq = RutasResponse()
-        resp = enviarsmq.responseEnviarRuta(rutaestr)
+        resp = enviarsmq.responseEnviarCrearRuta(rutaestr)
         return resp
 
     def setDataEmpresa(self, dataclientes, ruc):
