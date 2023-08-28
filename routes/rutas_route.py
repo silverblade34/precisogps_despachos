@@ -25,20 +25,6 @@ def mostrar_rutas():
     else:
         return redirect(url_for('login')) 
 
-@app.route('/modal_ruta', methods = ['GET'])
-def modal_ruta():
-    if 'user' in session:
-        session.pop('rutaestr', None)
-        _rutasCL = RutasController()
-        dataempresa = session['dataempresa']
-        rutaestr = _rutasCL.rutaEstructura(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'], request.args['rutacodigo'])
-        session['rutaestr'] = rutaestr
-        rutamostrar = str(rutaestr)
-        data = rutamostrar.replace("'",'"')
-        return render_template('modal_rutas.html', rutas = session['dataruta'], rutacodigo = request.args['rutacodigo'], dataempresa = dataempresa, rutaestr = data) 
-    else:
-        return redirect(url_for('login'))
-
 @app.route('/enviar_ruta_smq', methods=['POST'])
 def enviar_ruta_smq():
     try:
@@ -58,7 +44,6 @@ def data_ruta_nimbus():
     _rutasCL = RutasController()
     dataempresa = session['dataempresa']
     rutaestr = _rutasCL.rutaEstructura(dataempresa['token'], dataempresa['depot'], dataempresa['ruc'], request.json['rutacodigo'])
-    session['rutaestr'] = rutaestr
     rutamostrar = str(rutaestr)
     data = rutamostrar.replace("'",'"')
     resp = {"data": data, "codruta": request.json['rutacodigo']}
