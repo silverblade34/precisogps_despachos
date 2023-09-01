@@ -12,3 +12,6 @@
 	border: none;
 	cursor: pointer;
 }
+table.dataTable.no-footer {
+	border-bottom: 0px solid rgba(255, 255, 255, 0) !important;
+}

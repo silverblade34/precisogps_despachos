@@ -19,35 +19,30 @@
     <section class="container-table">
         <div class="table">
             <section class="table__header text-sm">
-                <h1>Filtros</h1>
-                <form action="{{url_for('despachos')}}" method="POST">
-                    <div>
-                        <label for="select">Seleccione una empresa: </label>
-                        <select class="select" name="select-ruc" id="select">
-                            <option value="">Todos</option>
-                            {% for cliente in datosclient %}
-                            <option value="{{cliente.ruc}}">{{cliente.empresa}}</option>
-                            {% endfor %}
-                        </select>
+                <h1 class="font-bold">Filtros</h1>
+                <form action="{{url_for('despachos')}}" method="POST" class="flex justify-between items-center">
+                    <div class="flex gap-4 items-center">
+                        <div class="flex gap-3 items-center">
+                            <label for="select">Seleccione una empresa: </label>
+                            <select class="select" name="select-ruc" id="select">
+                                <option value="">Todos</option>
+                                {% for cliente in datosclient %}
+                                <option value="{{cliente.ruc}}">{{cliente.empresa}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <label for="">Fecha: </label>
+                        <input type="datetime-local" id="start" name="date-filtro" class="date-filtro p-3 border focus:outline-none focus:border-blue-500" />
+                        <input type="submit" class="btn-preciso-despacho btn-preciso-2" value="Buscar" id="buscar-despachos"/>
                     </div>
-                    <label for="">Fecha: </label>
-                    <input type="datetime-local" id="start" name="date-filtro" class="date-filtro p-3 border focus:outline-none focus:border-blue-500" />
-                    <input type="submit" class="btn-preciso-despacho btn-preciso-2" value="Buscar" />
+                    <div>
+
+                    </div>
                 </form>
-                <!-- <div class="export__file">
-                            <label for="export-file" class="export__file-btn" title="Export File"></label>
-                            <input type="checkbox" id="export-file">
-                            <div class="export__file-options">
-                                <label>Export As &nbsp; &#10140;</label>
-                                <label for="export-file" id="toPDF">PDF <img src="{{url_for('static', filename='img/pdf.png')}}" alt=""></label>
-                                <label for="export-file" id="toJSON">JSON <img src="{{url_for('static', filename='img/json.png')}}" alt=""></label>
-                                <label for="export-file" id="toCSV">CSV <img src="{{url_for('static', filename='img/csv.png')}}" alt=""></label>
-                                <label for="export-file" id="toEXCEL">EXCEL <img src="{{url_for('static', filename='img/excel.png')}}" alt=""></label>
-                            </div>
-                        </div> -->
+     
             </section>
             <section class="table__body text-sm">
-                <table class="text-sm">
+                <table class="text-sm" id="tabla-despachos">
                     <thead>
                         <tr>
                             <th> Empresa</th>
@@ -80,6 +75,10 @@
             </section>
         </div>
     </section>
+    
 </main>
+<!-- Agrega las librerías de jQuery y DataTables -->
+<script src="{{url_for('static', filename='js/despachos-datatables.js')}}" defer></script>
+<!-- MAIN -->
 <!-- MAIN -->
 {% endblock %}
